@@ -1,0 +1,52 @@
+{
+    "name": "datamweb/shield-oauth",
+    "description": "OAuth for CodeIgniter Shield",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "codeigniter4",
+        "shield",
+        "oauth",
+        "googelOauth",
+        "githubOauth",
+        "authentication",
+        "authorization"
+    ],
+    "authors": [
+        {
+            "name": "Pooya Parsa Dadashi",
+            "email": "pooya_parsa_dadashi@yahoo.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/datamweb/shield-oauth",
+    "require": {
+        "php": "^7.4.3 || ^8.0 || ^8.1",
+        "codeigniter4/shield": "^v1.0.0-beta.2"
+    },
+    "require-dev": {
+        "codeigniter4/devkit": "^1.0",
+        "codeigniter4/framework": "^4.2.3",
+        "codeigniter4/shield": "^v1.0.0-beta.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Datamweb\\ShieldOAuth\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests",
+            "Tests\\Support\\": "tests/_support"
+        }
+    },
+    "support": {
+        "forum": "https://github.com/datamweb/shield-oauth/discussions",
+        "source": "https://github.com/datamweb/shield-oauth",
+        "issues": "https://github.com/datamweb/shield-oauth/issues",
+        "docs": "https://github.com/datamweb/shield-oauth/blob/develop/docs/index.md"
+    }
+}
