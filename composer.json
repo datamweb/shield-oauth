@@ -22,12 +22,12 @@
     "homepage": "https://github.com/datamweb/shield-oauth",
     "require": {
         "php": "^7.4.3 || ^8.0 || ^8.1",
-        "codeigniter4/shield": "^v1.0.0-beta.2"
+        "codeigniter4/shield": "dev-develop"
     },
     "require-dev": {
         "codeigniter4/devkit": "^1.0",
         "codeigniter4/framework": "^4.2.3",
-        "codeigniter4/shield": "^v1.0.0-beta.2"
+        "codeigniter4/shield": "dev-develop"
     },
     "autoload": {
         "psr-4": {
