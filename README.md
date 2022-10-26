@@ -10,7 +10,7 @@
 
 In `Shield OAuth`, it has been considered to be easy to use by developers and the possibility of expansion to connect to other services in the shortest possible time.
 
-<p align="center"><img src="/images/shieldOAuthDemo.jpg" alt="Demo Shield OAuth"></p>
+<p align="center"><img src="/images/ShieldOAuthDemo.jpg" alt="Demo Shield OAuth"></p>
 
 ## Requirements
 
