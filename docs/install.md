@@ -73,7 +73,7 @@ public array $usersColumnsName = [
 public $globals = [
     'before' => [
         // ...
-        'session' => ['except' => ['login*', 'register*', 'oauth*']],
+        'session' => ['except' => ['login*', 'register', 'auth/a/*', 'oauth*']],
     ],
     // ...
 ];
