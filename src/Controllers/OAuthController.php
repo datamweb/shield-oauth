@@ -101,7 +101,7 @@ class OAuthController extends BaseController implements ControllersInterface
             return redirect()->to(config('Auth')->loginRedirect());
         }
 
-        return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('unknown'));
+        return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.unknown'));
     }
 
     private function makeAntiForgeryKey(): string
