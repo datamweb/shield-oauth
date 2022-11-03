@@ -18,8 +18,6 @@ use CodeIgniter\Files\FileCollection;
 
 class ShieldOAuth
 {
-    private $oauthClassFiles = '';
-
     public static function setOAuth(string $serviceName): object
     {
         $serviceName = ucfirst($serviceName);
@@ -61,8 +59,6 @@ class ShieldOAuth
         // show only all *OAuth.php files
         $files = $files->retainPattern('*OAuth.php');
 
-        $this->setOtherOAuth($files);
-
         $allAllowedRoutes = '';
 
         foreach ($files as $file) {
@@ -73,23 +69,9 @@ class ShieldOAuth
         return mb_substr($allAllowedRoutes, 0, -1);
     }
 
-    public function setOtherOAuth($files)
-    {
-        return $this->oauthClassFiles = $files;
-    }
-
     private function otherOAuth(): array
     {
-        $files            = $this->oauthClassFiles;
-        $allAllowedRoutes = '';
-
-        foreach ($files as $file) {
-            // make string github|google and ... from class name
-            $allAllowedRoutes .= strtolower(str_replace($search = 'OAuth.php', $replace = '|', $subject = $file->getBasename()));
-        }
-        $allAllowedRoutes = mb_substr($allAllowedRoutes, 0, -1);
-
-        $pieces = explode('|', $allAllowedRoutes);
+        $pieces = explode('|', $this->allOAuth());
 
         return array_diff($pieces, ['github', 'google']);
     }
