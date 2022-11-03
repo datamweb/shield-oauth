@@ -71,7 +71,7 @@ class ShieldOAuth
 
     private function otherOAuth(): array
     {
-        $pieces = explode('|', $this->allOAuth);
+        $pieces = explode('|', $this->allOAuth());
 
         return array_diff($pieces, ['github', 'google']);
     }
