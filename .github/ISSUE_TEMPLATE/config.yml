@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/datamweb/shield-oauth/discussions
+    about: Please ask your support questions in the Discussions. Thanks!
