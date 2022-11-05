@@ -20,6 +20,8 @@
         }
     ],
     "homepage": "https://github.com/datamweb/shield-oauth",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^7.4.3 || ^8.0 || ^8.1",
         "codeigniter4/shield": "dev-develop"
@@ -42,6 +44,18 @@
             "Tests\\": "tests",
             "Tests\\Support\\": "tests/_support"
         }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "bash admin/setup.sh"
+        ],
+        "ci": [
+            "Composer\\Config::disableProcessTimeout",
+            "@cs"
+        ],
+        "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
+        "style": "@cs-fix"
     },
     "support": {
         "forum": "https://github.com/datamweb/shield-oauth/discussions",
