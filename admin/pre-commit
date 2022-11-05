@@ -1,0 +1,17 @@
+#!/bin/sh
+if [ "$FILES" != "" ]; then
+    echo "Running PHP CS Fixer..."
+
+    if [ -d /proc/cygdrive ]; then
+        ./vendor/bin/php-cs-fixer fix --verbose --dry-run --diff
+    else
+        php ./vendor/bin/php-cs-fixer fix --verbose --dry-run --diff
+    fi
+
+    if [ $? != 0 ]; then
+        echo "Some files are not following the coding standards. Please fix them before commit (try 'composer style')."
+        exit 1
+    fi
+fi
+
+exit $?
