@@ -60,6 +60,7 @@
     "config": {
         "allow-plugins": {
             "phpstan/extension-installer": true
+        }
     },
     "support": {
         "forum": "https://github.com/datamweb/shield-oauth/discussions",
