@@ -1,4 +1,5 @@
 # Shield OAuth Documentation
+[![PHP CS Fixer](https://github.com/datamweb/shield-oauth/workflows/PHPCSFixer/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml)
 
 <p align="center"><img src="/images/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
 
