@@ -1,5 +1,7 @@
 [Farsi](./README.fa-IR.md) | English
 ##  Codeigniter Shield OAuth
+[![PHPCSFixer](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml)
+[![PHPCPD](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml)
 
 <p align="center"><img src="/images/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
 
