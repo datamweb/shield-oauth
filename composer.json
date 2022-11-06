@@ -57,6 +57,11 @@
         "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
         "style": "@cs-fix"
     },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
+    },
     "support": {
         "forum": "https://github.com/datamweb/shield-oauth/discussions",
         "source": "https://github.com/datamweb/shield-oauth",
