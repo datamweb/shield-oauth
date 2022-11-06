@@ -18,7 +18,6 @@ use Datamweb\ShieldOAuth\Libraries\Basic\ShieldOAuth;
 
 class Services extends BaseService
 {
-
     public static function ShieldOAuth($getShared = true)
     {
         if ($getShared) {
