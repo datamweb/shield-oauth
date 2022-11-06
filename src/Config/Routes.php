@@ -11,7 +11,7 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-$routes->group('oauth', ['namespace' => '\Datamweb\ShieldOAuth\Controllers'], static function ($routes) {
+$routes->group('oauth', ['namespace' => '\Datamweb\ShieldOAuth\Controllers'], static function ($routes): void {
     $routes->addPlaceholder('allOAuthList', service('ShieldOAuth')->allOAuth());
     $routes->get('(:allOAuthList)', 'OAuthController::redirectOAuth/$1');
 

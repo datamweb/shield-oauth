@@ -88,8 +88,8 @@ class ShieldOAuth
                  <div class='btn-group' role='group' aria-label='Button group with nested dropdown'>
                  <a href='#' class='btn btn-primary active' aria-current='page'>" . $active_by . '</a>';
 
-        $Button .= '<a href=' . base_url('oauth/google') . ' ' . "class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Google.google') . '</a>';
-        $Button .= '<a href=' . base_url('oauth/github') . ' ' . "class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Github.github') . '</a>';
+        $Button .= '<a href=' . base_url('oauth/google') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Google.google') . '</a>';
+        $Button .= '<a href=' . base_url('oauth/github') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Github.github') . '</a>';
         if (count($this->otherOAuth()) > 0) {
             $Button .= "<div class='btn-group' role='group'>
                             <button type='button' class='btn btn-outline-secondary dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false'>"

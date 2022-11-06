@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file is part of Shield OAuth.
  *
@@ -24,7 +26,7 @@ class ShieldOAuth extends Migration
         $this->avatar     = config('ShieldOAuthConfig')->usersColumnsName['avatar'];
     }
 
-    public function up()
+    public function up(): void
     {
         $fields = [
             $this->first_name => [
@@ -48,7 +50,7 @@ class ShieldOAuth extends Migration
         $this->forge->addColumn('users', $fields);
     }
 
-    public function down()
+    public function down(): void
     {
         $fields = [
             $this->first_name,
