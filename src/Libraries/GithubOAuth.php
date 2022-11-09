@@ -20,7 +20,7 @@ class GithubOAuth extends AbstractOAuth
     public static $API_CODE_URL      = 'https://github.com/login/oauth/authorize';
     public static $API_TOKEN_URL     = 'https://github.com/login/oauth/access_token';
     public static $API_USER_INFO_URL = 'https://api.github.com/user';
-    private static $APPLICATION_NAME = 'SheildOAuth';
+    private static $APPLICATION_NAME = 'ShieldOAuth';
     protected string $token;
 
     public function __construct(string $token = '')
