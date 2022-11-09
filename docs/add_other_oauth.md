@@ -44,7 +44,7 @@ class YahooOAuth extends AbstractOAuth
     static private $API_CODE_URL      = 'https://api.login.yahoo.com/oauth2/request_auth';
     static private $API_TOKEN_URL     = 'https://api.login.yahoo.com/oauth2/get_token';
     static private $API_USER_INFO_URL = 'https://api.login.yahoo.com/openid/v1/userinfo';
-    static private $APPLICATION_NAME  = 'SheildOAuth';
+    static private $APPLICATION_NAME  = 'ShieldOAuth';
 
     protected string $token;
     protected string $client_id;

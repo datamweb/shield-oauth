@@ -20,7 +20,7 @@ class GoogleOAuth extends AbstractOAuth
     private static $API_CODE_URL      = 'https://accounts.google.com/o/oauth2/v2/auth';
     private static $API_TOKEN_URL     = 'https://oauth2.googleapis.com/token';
     private static $API_USER_INFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo';
-    private static $APPLICATION_NAME  = 'SheildOAuth';
+    private static $APPLICATION_NAME  = 'ShieldOAuth';
     protected string $token;
     protected string $client_id;
     protected string $client_secret;
