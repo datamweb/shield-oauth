@@ -18,9 +18,16 @@ use Datamweb\ShieldOAuth\Views\Decorators\ShieldOAuth;
 class Registrar
 {
     /**
+     * --------------------------------------------------------------------------
+     * Shield OAuth Decorator
+     * --------------------------------------------------------------------------
      * Register the ShieldOAuth decorator.
+     *
+     * @see https://codeigniter.com/user_guide/outgoing/view_decorators.html
+     *
+     * @return array<string, array<int, string>>
      */
-    public static function View(): array
+    public static function View()
     {
         return [
             'decorators' => [
