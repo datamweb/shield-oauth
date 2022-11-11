@@ -18,12 +18,24 @@ use Datamweb\ShieldOAuth\Libraries\Basic\ShieldOAuth;
 
 class Services extends BaseService
 {
+    /**
+     * -------------------------------------------------------
+     * Service Configuration file
+     * -------------------------------------------------------
+     * Create and share new class instances
+     *
+     * More Info @see https://codeigniter.com/user_guide/concepts/services.html
+     *
+     * @param mixed $getShared
+     *
+     * @return mixed|ShieldOAuth
+     */
     public static function ShieldOAuth($getShared = true)
     {
         if ($getShared) {
             return static::getSharedInstance('ShieldOAuth');
         }
 
-        return new ShieldOAuth(new ShieldOAuthConfig());
+        return new ShieldOAuth();
     }
 }
