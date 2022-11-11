@@ -26,11 +26,9 @@ class Services extends BaseService
      *
      * More Info @see https://codeigniter.com/user_guide/concepts/services.html
      *
-     * @param mixed $getShared
-     *
      * @return mixed|ShieldOAuth
      */
-    public static function ShieldOAuth($getShared = true)
+    public static function ShieldOAuth(bool $getShared = true)
     {
         if ($getShared) {
             return static::getSharedInstance('ShieldOAuth');
