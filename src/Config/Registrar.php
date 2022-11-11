@@ -25,7 +25,7 @@ class Registrar
      *
      * @see https://codeigniter.com/user_guide/outgoing/view_decorators.html
      *
-     * @return array<string, array<int, string>>
+     * @return array<string, list<string>>
      */
     public static function View()
     {
