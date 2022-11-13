@@ -14,17 +14,22 @@ declare(strict_types=1);
 namespace Datamweb\ShieldOAuth\Models;
 
 use CodeIgniter\Shield\Models\UserModel;
+use Datamweb\ShieldOAuth\Config\ShieldOAuthConfig;
 
 class ShieldOAuthModel extends UserModel
 {
     protected function initialize(): void
     {
         parent::initialize();
+
+        /** @var ShieldOAuthConfig $config */
+        $config = config(ShieldOAuthConfig::class);
+
         // Merge properties with parent
         $this->allowedFields = array_merge($this->allowedFields, [
-            config('ShieldOAuthConfig')->usersColumnsName['first_name'],
-            config('ShieldOAuthConfig')->usersColumnsName['last_name'],
-            config('ShieldOAuthConfig')->usersColumnsName['avatar'],
+            $config->usersColumnsName['first_name'],
+            $config->usersColumnsName['last_name'],
+            $config->usersColumnsName['avatar'],
         ]);
     }
 }
