@@ -14,16 +14,23 @@ declare(strict_types=1);
 namespace Datamweb\ShieldOAuth\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use Datamweb\ShieldOAuth\Config\ShieldOAuthConfig;
 
 class ShieldOAuth extends Migration
 {
+    private string $first_name;
+    private string $last_name;
+    private string $avatar;
+
     public function __construct()
     {
         parent::__construct();
 
-        $this->first_name = config('ShieldOAuthConfig')->usersColumnsName['first_name'];
-        $this->last_name  = config('ShieldOAuthConfig')->usersColumnsName['last_name'];
-        $this->avatar     = config('ShieldOAuthConfig')->usersColumnsName['avatar'];
+        /** @var ShieldOAuthConfig $config */
+        $config           = config(ShieldOAuthConfig::class);
+        $this->first_name = $config->usersColumnsName['first_name'];
+        $this->last_name  = $config->usersColumnsName['last_name'];
+        $this->avatar     = $config->usersColumnsName['avatar'];
     }
 
     public function up(): void
