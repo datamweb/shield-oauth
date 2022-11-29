@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:30"
+    timezone: "Asia/Tehran"
+  open-pull-requests-limit: 5
+  reviewers:
+   - "datamweb"
+  labels:
+   - "dependa bot"
+     
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:30"
+    timezone: "Asia/Tehran"
+  reviewers:
+   - "datamweb"
+  labels:
+   - "dependa bot"
+     
