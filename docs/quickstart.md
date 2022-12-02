@@ -43,6 +43,13 @@ public array $oauthConfigs = [
     // and other services...
 ```
 
+> **Note**
+> By default, there is no file `app/Config/ShieldOAuthConfig.php`. It is strongly recommended to set the keys to `app/Config/ShieldOAuthConfig.php`. This behavior will make sure that there will be no problems for the settings you have made in case of update `Shield OAuth`. To create it, you can use the following command:
+>
+> ```console
+> php spark make:oauthconfig
+> ```
+
 ### Step 5 : 
 Cancel filter for `Shield OAuth` routes.
 ```php
