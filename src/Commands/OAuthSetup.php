@@ -2,10 +2,19 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of Shield OAuth.
+ *
+ * (c) Datamweb <pooya_parsa_dadashi@yahoo.com>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Datamweb\ShieldOAuth\Commands;
 
-use CodeIgniter\Shield\Commands\Setup\ContentReplacer;
 use CodeIgniter\Shield\Commands\Setup;
+use CodeIgniter\Shield\Commands\Setup\ContentReplacer;
 
 class OAuthSetup extends Setup
 {
@@ -97,5 +106,4 @@ class OAuthSetup extends Setup
 
         $this->writeFile($file, $content);
     }
-
 }
