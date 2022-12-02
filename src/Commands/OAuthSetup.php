@@ -1,0 +1,101 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Datamweb\ShieldOAuth\Commands;
+
+use CodeIgniter\Shield\Commands\Setup\ContentReplacer;
+use CodeIgniter\Shield\Commands\Setup;
+
+class OAuthSetup extends Setup
+{
+    /**
+     * The group the command is lumped under
+     * when listing commands.
+     *
+     * @var string
+     */
+    protected $group = 'ShieldOAuth';
+
+    /**
+     * The Command's name
+     *
+     * @var string
+     */
+    protected $name = 'make:oauthconfig';
+
+    /**
+     * the Command's short description
+     *
+     * @var string
+     */
+    protected $description = 'Generate file ShieldOAuthConfig in path APPPATH\Config.';
+
+    /**
+     * the Command's usage
+     *
+     * @var string
+     */
+    protected $usage = 'make:oauthconfig';
+
+    /**
+     * the Command's Arguments
+     *
+     * @var array
+     */
+    protected $arguments = [];
+
+    /**
+     * the Command's Options
+     *
+     * @var array<string, string>
+     */
+    protected $options = [
+        '-f' => 'Force overwrite ALL existing files in destination.',
+    ];
+
+    /**
+     * The path to `Datamweb\ShieldOAuth\` src directory.
+     *
+     * @var string
+     */
+    protected $sourcePath;
+
+    protected $distPath = APPPATH;
+    private ContentReplacer $replacer;
+
+    /**
+     * Displays the help for the spark cli script itself.
+     */
+    public function run(array $params): void
+    {
+        $this->replacer = new ContentReplacer();
+
+        $this->sourcePath = __DIR__ . '/../';
+
+        $file     = 'Config/ShieldOAuthConfig.php';
+        $replaces = [
+            'namespace Datamweb\ShieldOAuth\Config;' => 'namespace Config;',
+            'use CodeIgniter\\Config\\BaseConfig;'   => 'use Datamweb\ShieldOAuth\Config\ShieldOAuthConfig as OAuthConfig;',
+            'extends BaseConfig'                     => 'extends OAuthConfig',
+        ];
+
+        $this->copyAndReplace($file, $replaces);
+    }
+
+    /**
+     * @param string $file     Relative file path like 'Config/ShieldOAuthConfig.php'.
+     * @param array  $replaces [search => replace]
+     */
+    protected function copyAndReplace(string $file, array $replaces): void
+    {
+        $path = "{$this->sourcePath}/{$file}";
+
+        $content = file_get_contents($path);
+
+        $content = $this->replacer->replace($content, $replaces);
+
+        $this->writeFile($file, $content);
+    }
+
+}
