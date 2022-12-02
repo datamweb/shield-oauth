@@ -15,37 +15,52 @@ namespace Datamweb\ShieldOAuth\Libraries\Basic;
 
 use CodeIgniter\Config\Factories;
 use CodeIgniter\Files\FileCollection;
+use Config\Autoload;
 
 class ShieldOAuth
 {
+    /**
+     * --------------------------------------------------------------------
+     * Set OAuth
+     * --------------------------------------------------------------------
+     * This function creating instances of OAuth class chosen by the user
+     *
+     * This function has the ability to identify classes in two Paths:
+     *
+     *  - \App\Libraries\ShieldOAuth\       for load any OAuth custom class created by the user
+     *  - \Datamweb\ShieldOAuth\Libraries\  for load GithubOAuth or GoogleOAuth class
+     */
     public static function setOAuth(string $serviceName): object
     {
         $serviceName = ucfirst($serviceName);
         $className   = '\Datamweb\ShieldOAuth\Libraries\\' . $serviceName . 'OAuth';
 
-        // For to detect custom OAuth
+        // For detect custom OAuth
         if (file_exists(APPPATH . 'Libraries/ShieldOAuth' . DIRECTORY_SEPARATOR . $serviceName . 'OAuth.php')) {
-            $className = 'App\Libraries\ShieldOAuth\\' . $serviceName . 'OAuth';
+            $className = '\App\Libraries\ShieldOAuth\\' . $serviceName . 'OAuth';
         }
 
-        return $oauthClass = Factories::loadOAuth($className);
+        return Factories::loadOAuth($className); // @phpstan-ignore-line
     }
 
     /**
      * --------------------------------------------------------------------
-     * Names of all supported services
+     * Names of all supported OAuth services
      * --------------------------------------------------------------------
-     * Here we have recorded the list of all the services with which it is possible to login.
+     * List of all the OAuth services
      *
-     * Returns the names of all supported services for use in routes
-     * e.g. 'github|google|yahoo|...'
-     * Note: @see https://codeigniter.com/user_guide/incoming/routing.html#custom-placeholders
+     * Identifies all OAuth classes and generates a string according to the file name of the classes as follows.
+     * e.g. 'github|google|yahoo' ...
      */
     public function allOAuth(): string
     {
         $files = new FileCollection();
+
+        /** @var Autoload $autoload */
+        $autoload = config(Autoload::class);
+
         // Checking if it is installed manually
-        if (array_key_exists('Datamweb\ShieldOAuth', Config('Autoload')->psr4)) {
+        if (array_key_exists('Datamweb\ShieldOAuth', $autoload->psr4)) {
             // Adds all Libraries files
             $files = $files->add(APPPATH . 'ThirdParty/shield-oauth/src/Libraries', false);
         } else {
@@ -59,23 +74,45 @@ class ShieldOAuth
         // show only all *OAuth.php files
         $files = $files->retainPattern('*OAuth.php');
 
-        $allAllowedRoutes = '';
+        $allOAuth = '';
 
         foreach ($files as $file) {
             // make string github|google and ... from class name
-            $allAllowedRoutes .= strtolower(str_replace($search = 'OAuth.php', $replace = '|', $subject = $file->getBasename()));
+            $allOAuth .= strtolower(str_replace('OAuth.php', '|', $file->getBasename()));
         }
 
-        return mb_substr($allAllowedRoutes, 0, -1);
+        return mb_substr($allOAuth, 0, -1);
     }
 
-    private function otherOAuth(): array
+    /**
+     * --------------------------------------------------------------------
+     * Names of all Custom OAuth
+     * --------------------------------------------------------------------
+     * List of all just CustomOAuth services
+     *
+     * Returns array of all Custom OAuth classes file name
+     * e.g. ['yahoo']
+     *
+     * @return array<int, string>
+     */
+    private function otherOAuth()
     {
         $pieces = explode('|', $this->allOAuth());
 
         return array_diff($pieces, ['github', 'google']);
     }
 
+    /**
+     * --------------------------------------------------------------------
+     * Make OAuth Button
+     * --------------------------------------------------------------------
+     * Creates OAuth buttons based on existing OAuth classes
+     *
+     * Group a series of buttons together on a single line by bootstrap 5.0
+     *
+     * @see https://getbootstrap.com/docs/5.0/components/button-group/#nesting
+     * @see https://getbootstrap.com/docs/5.0/components/button-group/#basic-example
+     */
     public function makeOAuthButton(string $forPage = 'login'): string
     {
         $active_by = lang('ShieldOAuthLang.login_by');
