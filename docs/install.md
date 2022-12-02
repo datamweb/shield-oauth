@@ -84,6 +84,13 @@ public $globals = [
 Receive keys `client_id` and `client_secret` from each OAuth server.
 To connect to any of the servers, you need to receive`client_id` and `client_secret` from them and then set them in file `app/Config/ShieldOAuthConfig`.
 
+> **Note**
+> By default, there is no file `app/Config/ShieldOAuthConfig`. It is strongly recommended to set the keys to `app/Config/ShieldOAuthConfig`. This behavior will make sure that there will be no problems for the settings you have made in case of update `Shield OAuth`. To create it, you can use the following command:
+>
+> ```console
+> php spark make:oauthconfig
+> ```
+
 You can see [How To Get Keys](get_keys.md) for instructions on how to get the keys.
 
 ```php
