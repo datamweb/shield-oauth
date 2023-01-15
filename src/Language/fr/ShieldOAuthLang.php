@@ -30,11 +30,11 @@ return [
     // Errors List For all OAuth
     'Github' => [
         'github'    => 'Github',
-        'not_allow' => "Vous ne pouvez pas vous connecter ou vous inscrire avec GitHub maintenant!",
+        'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec GitHub maintenant!',
     ],
     'Google' => [
         'google'    => 'Google',
-        'not_allow' => "Vous ne pouvez pas vous connecter ou vous inscrire avec Google maintenant!",
+        'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec Google maintenant!',
 
     ],
     // 'Yahoo' => [
