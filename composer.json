@@ -7,7 +7,7 @@
         "codeigniter4",
         "shield",
         "oauth",
-        "googelOauth",
+        "googleOauth",
         "githubOauth",
         "authentication",
         "authorization"
