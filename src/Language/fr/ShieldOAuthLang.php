@@ -11,8 +11,6 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace Datamweb\ShieldOAuth\Language\fr;
-
 // ShieldOAuthLang language file
 return [
     // Errors List
