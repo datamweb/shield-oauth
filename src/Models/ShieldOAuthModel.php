@@ -19,6 +19,7 @@ class ShieldOAuthModel extends UserModel
 {
     protected function initialize(): void
     {
+        parent::initialize();
         // Merge properties with parent
         $this->allowedFields = array_merge($this->allowedFields, [
             config('ShieldOAuthConfig')->usersColumnsName['first_name'],
