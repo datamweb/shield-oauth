@@ -71,7 +71,7 @@ class GoogleOAuth extends AbstractOAuth
     {
         // send request to API URL
         try {
-            $response = $this->client->request('GET', self::$API_USER_INFO_URL, [
+            $response = $this->client->request('POST', self::$API_USER_INFO_URL, [
                 'headers' => [
                     'Accept'        => 'application/json',
                     'User-Agent'    => self::$APPLICATION_NAME . '/1.0',
