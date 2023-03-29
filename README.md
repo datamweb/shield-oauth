@@ -3,7 +3,7 @@
 [![PHPCSFixer](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml)
 [![PHPCPD](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml)
 
-<p align="center"><img src="/images/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
+<p align="center"><img src="https://github.com/datamweb/my-repository-files/blob/main/shield-oauth/image/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
 
 [![Latest Stable Version](http://poser.pugx.org/datamweb/shield-oauth/v?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Total Downloads](http://poser.pugx.org/datamweb/shield-oauth/downloads?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Latest Unstable Version](http://poser.pugx.org/datamweb/shield-oauth/v/unstable?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![License](http://poser.pugx.org/datamweb/shield-oauth/license?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![PHP Version Require](http://poser.pugx.org/datamweb/shield-oauth/require/php?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth)
 
@@ -12,7 +12,7 @@
 
 In `Shield OAuth`, it has been considered to be easy to use by developers and the possibility of expansion to connect to other services in the shortest possible time.
 
-<p align="center"><img src="/images/ShieldOAuthDemo.jpg" alt="Demo Shield OAuth"></p>
+<p align="center"><img src="https://github.com/datamweb/my-repository-files/blob/main/shield-oauth/image/ShieldOAuthDemo.jpg" alt="Demo Shield OAuth"></p>
 
 ## Requirements
 
