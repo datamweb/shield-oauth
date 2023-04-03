@@ -1,9 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This file is part of Shield OAuth.
+ *
+ * (c) Datamweb <pooya_parsa_dadashi@yahoo.com>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Datamweb\ShieldOAuth\Commands\Generators;
 
 use CodeIgniter\CLI\BaseCommand;
-use CodeIgniter\CLI\CLI;
 use CodeIgniter\CLI\GeneratorTrait;
 
 class NewShieldOauthGenerator extends BaseCommand
@@ -41,27 +51,25 @@ class NewShieldOauthGenerator extends BaseCommand
     /**
      * The Command's Arguments
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $arguments = [
-        'name' => 'The name of the new OAuth without the `OAuth` suffix. The `OAuth` suffix will be automatically added for you.'
+        'name' => 'The name of the new OAuth without the `OAuth` suffix. The `OAuth` suffix will be automatically added for you.',
     ];
 
     /**
      * The Command's Options
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $options = [
-        '--force'     => 'Force overwrite existing file.',
+        '-f' => 'Force overwrite existing file.',
     ];
 
     /**
      * Actually execute a command.
-     *
-     * @param array $params
      */
-    public function run(array $params)
+    public function run(array $params): void
     {
         $this->component = 'Library';
         $this->directory = 'Libraries/ShieldOAuth';
