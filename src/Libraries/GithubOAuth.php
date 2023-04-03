@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Datamweb\ShieldOAuth\Libraries;
 
 use Datamweb\ShieldOAuth\Libraries\Basic\AbstractOAuth;
+use Exception;
 
 class GithubOAuth extends AbstractOAuth
 {
