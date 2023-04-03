@@ -37,6 +37,7 @@ declare(strict_types=1);
 namespace App\Libraries\ShieldOAuth;
 
 use Datamweb\ShieldOAuth\Libraries\Basic\AbstractOAuth;
+use Exception;
 
 class YahooOAuth extends AbstractOAuth
 {
