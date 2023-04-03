@@ -29,14 +29,14 @@ class GithubOAuth extends AbstractOAuth
         $this->client = \Config\Services::curlrequest();
 
         $this->config        = config('ShieldOAuthConfig');
-        $this->callbake_url  = base_url('oauth/' . $this->config->call_back_route);
+        $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
         $this->client_id     = $this->config->oauthConfigs['github']['client_id'];
         $this->client_secret = $this->config->oauthConfigs['github']['client_secret'];
     }
 
     public function makeGoLink(string $state): string
     {
-        return $redirectUrl = self::$API_CODE_URL . "?client_id={$this->client_id}&redirect_uri={$this->callbake_url}&scope=user%3Aemail&response_type=code&state={$state}";
+        return $redirectUrl = self::$API_CODE_URL . "?client_id={$this->client_id}&redirect_uri={$this->callback_url}&scope=user%3Aemail&response_type=code&state={$state}";
     }
 
     protected function fetchAccessTokenWithAuthCode(array $allGet): void
@@ -48,7 +48,7 @@ class GithubOAuth extends AbstractOAuth
                     'client_id'     => $this->client_id,
                     'client_secret' => $this->client_secret,
                     'code'          => $allGet['code'],
-                    'redirect_uri'  => $this->callbake_url,
+                    'redirect_uri'  => $this->callback_url,
                     'grant_type'    => 'authorization_code',
                 ],
                 'headers' => [

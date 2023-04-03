@@ -24,7 +24,7 @@ class GoogleOAuth extends AbstractOAuth
     protected string $token;
     protected string $client_id;
     protected string $client_secret;
-    protected string $callbake_url;
+    protected string $callback_url;
 
     public function __construct(string $token = '')
     {
@@ -32,14 +32,14 @@ class GoogleOAuth extends AbstractOAuth
         $this->client = \Config\Services::curlrequest();
 
         $this->config        = config('ShieldOAuthConfig');
-        $this->callbake_url  = base_url('oauth/' . $this->config->call_back_route);
+        $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
         $this->client_id     = $this->config->oauthConfigs['google']['client_id'];
         $this->client_secret = $this->config->oauthConfigs['google']['client_secret'];
     }
 
     public function makeGoLink(string $state): string
     {
-        return self::$API_CODE_URL . "?response_type=code&client_id={$this->client_id}&scope=openid%20email%20profile&redirect_uri={$this->callbake_url}&state={$state}";
+        return self::$API_CODE_URL . "?response_type=code&client_id={$this->client_id}&scope=openid%20email%20profile&redirect_uri={$this->callback_url}&state={$state}";
     }
 
     protected function fetchAccessTokenWithAuthCode(array $allGet): void
@@ -51,7 +51,7 @@ class GoogleOAuth extends AbstractOAuth
                     'client_id'     => $this->client_id,
                     'client_secret' => $this->client_secret,
                     'code'          => $allGet['code'],
-                    'redirect_uri'  => $this->callbake_url,
+                    'redirect_uri'  => $this->callback_url,
                     'grant_type'    => 'authorization_code',
                 ],
                 'headers' => [
