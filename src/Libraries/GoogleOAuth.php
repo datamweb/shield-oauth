@@ -22,6 +22,8 @@ class GoogleOAuth extends AbstractOAuth
     private static $API_USER_INFO_URL = 'https://www.googleapis.com/oauth2/v3/userinfo';
     private static $APPLICATION_NAME  = 'ShieldOAuth';
     protected string $token;
+    protected $client;
+    protected $config;
     protected string $client_id;
     protected string $client_secret;
     protected string $callback_url;

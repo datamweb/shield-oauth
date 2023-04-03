@@ -47,6 +47,8 @@ class YahooOAuth extends AbstractOAuth
     static private $APPLICATION_NAME  = 'ShieldOAuth';
 
     protected string $token;
+    protected $client;
+    protected $config;
     protected string $client_id;
     protected string $client_secret;
     protected string $callback_url;
