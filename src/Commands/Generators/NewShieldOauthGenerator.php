@@ -16,6 +16,7 @@ namespace Datamweb\ShieldOAuth\Commands\Generators;
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
 use CodeIgniter\CLI\GeneratorTrait;
+use CodeIgniter\Shield\Commands\Setup\ContentReplacer;
 
 class NewShieldOauthGenerator extends BaseCommand
 {
@@ -68,6 +69,18 @@ class NewShieldOauthGenerator extends BaseCommand
     ];
 
     /**
+     * Path to the app folder
+     *
+     * @var string
+     */
+    protected $distPath = APPPATH;
+
+    /**
+     * The ContentReplacer class
+     */
+    protected ContentReplacer $replacer;
+
+    /**
      * Actually execute a command.
      */
     public function run(array $params): int
@@ -78,6 +91,8 @@ class NewShieldOauthGenerator extends BaseCommand
 
             return 1;
         }
+
+        $this->replacer = new ContentReplacer();
 
         $this->component     = 'Library';
         $this->directory     = 'Libraries\ShieldOAuth';
@@ -99,6 +114,74 @@ class NewShieldOauthGenerator extends BaseCommand
         // @TODO execute() is deprecated in CI v4.3.0.
         $this->execute($params); // @phpstan-ignore-line suppress deprecated error.
 
+        // Update config
+        $this->updateConfig($class);
+
         return 0;
+    }
+
+    /**
+     * Add new OAuth to ShieldOAuthConfig.
+     *
+     * @param string $className
+     */
+    private function updateConfig($className): int
+    {
+        // Check that the config file exists
+        $file = 'Config/ShieldOAuthConfig.php';
+        if (! is_file($this->distPath . $file)) {
+            CLI::error('ShieldOAuthConfig.php does not exist. Please run `php spark make:oauthconfig` first.', 'light_gray', 'red');
+
+            return 1;
+        }
+
+        // Add the code
+        $codeKey  = strtolower(str_replace('OAuth', '', $className));
+        $codeName = ucfirst(str_replace('OAuth', '', $className));
+        $code     = "'{$codeKey}' => [
+            'client_id' => 'Get it from {$codeName}',
+            'client_secret' => 'Get it from {$codeName}',
+
+            'allow_login' => true,
+        ],";
+
+        // Add helper setup
+        $pattern = '/(' . preg_quote('public array $oauthConfigs = [', '/') . ')/u';
+        $replace = '$1' . "\n        " . $code;
+
+        $this->add($file, $code, $pattern, $replace);
+
+        return 0;
+    }
+
+    /**
+     * @param string $code Code to add.
+     * @param string $file Relative file path like 'Controllers/BaseController.php'.
+     */
+    protected function add(string $file, string $code, string $pattern, string $replace): void
+    {
+        $path      = $this->distPath . $file;
+        $cleanPath = clean_path($path);
+
+        $content = file_get_contents($path);
+
+        $output = $this->replacer->add($content, $code, $pattern, $replace);
+
+        if ($output === true) {
+            CLI::error("  Skipped {$cleanPath}. It has already been updated.");
+
+            return;
+        }
+        if ($output === false) {
+            CLI::error("  Error checking {$cleanPath}.");
+
+            return;
+        }
+
+        if (write_file($path, $output)) {
+            CLI::write(CLI::color('  Updated: ', 'green') . $cleanPath);
+        } else {
+            CLI::error("  Error updating {$cleanPath}.");
+        }
     }
 }
