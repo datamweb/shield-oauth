@@ -28,4 +28,16 @@ class Registrar
             ],
         ];
     }
+
+    /**
+     * Register the ShieldOAuth make:oauth generator template.
+     */
+    public static function Generators(): array
+    {
+        return [
+            'views' => [
+                'make:oauth' => 'Datamweb\ShieldOAuth\Commands\Generators\Views\newoauth.tpl.php',
+            ],
+        ];
+    }
 }
