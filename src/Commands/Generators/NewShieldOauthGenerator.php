@@ -111,11 +111,14 @@ class NewShieldOauthGenerator extends BaseCommand
 
         $params[0] = $class;
 
+        // ShieldOAuthConfig file must be present
+        if ($this->updateConfig($class) !== 0) {
+            CLI::error('ShieldOAuthConfig.php does not exist. Please run `php spark make:oauthconfig` first.', 'light_gray', 'red');
+
+            return 1;
+        }
         // @TODO execute() is deprecated in CI v4.3.0.
         $this->execute($params); // @phpstan-ignore-line suppress deprecated error.
-
-        // Update config
-        $this->updateConfig($class);
 
         return 0;
     }
@@ -130,8 +133,6 @@ class NewShieldOauthGenerator extends BaseCommand
         // Check that the config file exists
         $file = 'Config/ShieldOAuthConfig.php';
         if (! is_file($this->distPath . $file)) {
-            CLI::error('ShieldOAuthConfig.php does not exist. Please run `php spark make:oauthconfig` first.', 'light_gray', 'red');
-
             return 1;
         }
 
