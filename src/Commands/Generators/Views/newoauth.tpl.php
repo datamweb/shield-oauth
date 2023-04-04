@@ -33,7 +33,7 @@ class {class} extends AbstractOAuth
      */
     public function __construct(string $token = '')
     {
-        // your code here
+        // Your code here
     }
 
     /**
@@ -45,7 +45,7 @@ class {class} extends AbstractOAuth
      */
     public function makeGoLink(string $state): string
     {
-        // your code here
+        // Your code here
         return '';
     }
 
@@ -55,11 +55,11 @@ class {class} extends AbstractOAuth
      *
      * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
      * @param array $allGet
-     * @return mixed
+     * @return void
      */
     public function fetchAccessTokenWithAuthCode(array $allGet): void
     {
-        // your code here
+        // Your code here
     }
 
     /**
@@ -72,7 +72,7 @@ class {class} extends AbstractOAuth
      */
     public function fetchUserInfoWithToken(): object
     {
-        // your code here
+        // Your code here
         return json_decode('');
     }
 
@@ -87,7 +87,7 @@ class {class} extends AbstractOAuth
      */
     public function setColumnsName(string $nameOfProcess, object $userInfo): array
     {
-        // your code here
+        // Your code here
         return [];
     }
 }
