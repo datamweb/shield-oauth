@@ -118,6 +118,11 @@ class NewShieldOauthGenerator extends BaseCommand
             return 1;
         }
 
+        // Default language file is required
+        if ($this->createLang($class) !== 0) {
+            return 1;
+        }
+
         // @TODO execute() is deprecated in CI v4.3.0.
         $this->execute($params); // @phpstan-ignore-line suppress deprecated error.
 
@@ -155,6 +160,56 @@ class NewShieldOauthGenerator extends BaseCommand
         $this->add($file, $code, $pattern, $replace);
 
         return 0;
+    }
+
+    /**
+     * Create or update language file for English (en).
+     * Other languages should be translated by the
+     * developer where necessary.
+     *
+     * @param string $className
+     */
+    private function createLang($className): int
+    {
+        // Set the Oauth key, name and actual content
+        $oauthKey     = strtolower(str_replace('OAuth', '', $className));
+        $oauthName    = ucfirst(str_replace('OAuth', '', $className));
+        $oauthContent = "'{$oauthName}' => [
+        'not_allow' => 'Now you can\\'t login or register with {$oauthName}!',
+        '{$oauthKey}' => '{$oauthName}',
+    ],";
+        // Update if file exists
+        $file = 'Language/en/ShieldOAuthLang.php';
+        $path = $this->distPath . $file;
+        if (is_file($this->distPath . $file)) {
+            // Code addition setup
+            $pattern = '/(' . preg_quote('return [', '/') . ')/u';
+            $replace = '$1' . "\n    " . $oauthContent;
+
+            $this->add($file, $oauthContent, $pattern, $replace);
+
+            return 0;
+        }
+
+        // This is a new file, prepare the contents
+        $content = "<?php \n\n";
+        $content .= "return [\n";
+        $content .= "    {$oauthContent}\n";
+        $content .= "];\n";
+        $cleanPath = clean_path($path);
+        $directory = dirname($path);
+        if (! is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
+
+        if (write_file($path, $content)) {
+            CLI::write(CLI::color('  Created: ', 'green') . $cleanPath);
+
+            return 0;
+        }
+        CLI::error("  Error creating {$cleanPath}.");
+
+        return 1;
     }
 
     /**
