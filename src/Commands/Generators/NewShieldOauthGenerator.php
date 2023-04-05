@@ -117,6 +117,7 @@ class NewShieldOauthGenerator extends BaseCommand
 
             return 1;
         }
+
         // @TODO execute() is deprecated in CI v4.3.0.
         $this->execute($params); // @phpstan-ignore-line suppress deprecated error.
 
@@ -136,20 +137,21 @@ class NewShieldOauthGenerator extends BaseCommand
             return 1;
         }
 
-        // Add the code
-        $codeKey  = strtolower(str_replace('OAuth', '', $className));
-        $codeName = ucfirst(str_replace('OAuth', '', $className));
-        $code     = "'{$codeKey}' => [
-            'client_id' => 'Get it from {$codeName}',
-            'client_secret' => 'Get it from {$codeName}',
+        // Create the new config items to be added
+        $oauthKey  = strtolower(str_replace('OAuth', '', $className));
+        $oauthName = ucfirst(str_replace('OAuth', '', $className));
+        $code      = "'{$oauthKey}' => [
+            'client_id' => 'Get it from {$oauthName}',
+            'client_secret' => 'Get it from {$oauthName}',
 
             'allow_login' => true,
         ],";
 
-        // Add helper setup
+        // Setup the process of adding the code to the config file
         $pattern = '/(' . preg_quote('public array $oauthConfigs = [', '/') . ')/u';
         $replace = '$1' . "\n        " . $code;
 
+        // Add the code
         $this->add($file, $code, $pattern, $replace);
 
         return 0;
