@@ -14,12 +14,13 @@ declare(strict_types=1);
 namespace Datamweb\ShieldOAuth\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Shield\Entities\User;
 use Datamweb\ShieldOAuth\Libraries\Basic\ControllersInterface;
 
 class OAuthController extends BaseController implements ControllersInterface
 {
-    public function redirectOAuth(string $oauthName)
+    public function redirectOAuth(string $oauthName): RedirectResponse
     {
         // if user login
         if (auth()->loggedIn()) {
@@ -45,7 +46,7 @@ class OAuthController extends BaseController implements ControllersInterface
         return redirect()->to($redirectLink);
     }
 
-    public function callBack()
+    public function callBack(): RedirectResponse
     {
         // if user after callback request url
         if (! session('oauth_name')) {
