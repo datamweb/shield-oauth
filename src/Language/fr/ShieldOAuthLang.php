@@ -27,7 +27,7 @@ return [
 
     // Errors List For all OAuth
     'Github' => [
-        'github'    => 'Github',
+        'github'    => 'GitHub',
         'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec GitHub maintenant!',
     ],
     'Google' => [
