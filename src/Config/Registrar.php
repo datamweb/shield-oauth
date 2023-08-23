@@ -27,7 +27,7 @@ class Registrar
      *
      * @return array<string, list<string>>
      */
-    public static function View()
+    public static function View(): array
     {
         return [
             'decorators' => [
