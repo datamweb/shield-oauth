@@ -33,7 +33,6 @@ return [
     'Google' => [
         'google'    => 'Google',
         'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec Google maintenant!',
-
     ],
     // 'Yahoo' => [
     //     'yahoo'     => 'Yahoo',
