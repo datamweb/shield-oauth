@@ -65,7 +65,7 @@ class ShieldOAuth
             $files = $files->add(APPPATH . 'ThirdParty/shield-oauth/src/Libraries', false);
         } else {
             // Adds all Libraries files if install via composer
-            $files = $files->add(VENDORPATH . 'datamweb/shield-oauth/src/Libraries', false);
+            $files = $files->add(__DIR__ . '/..', false);
         }
         // For to detect custom OAuth
         if (is_dir(APPPATH . 'Libraries/ShieldOAuth')) {
