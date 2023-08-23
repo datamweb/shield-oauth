@@ -1,0 +1,21 @@
+parameters:
+	tmpDir: build/phpstan
+	level: 6
+	paths:
+		- src/
+	bootstrapFiles:
+		- vendor/codeigniter4/framework/system/Test/bootstrap.php
+	excludePaths:
+		- app/Config/Routes.php
+		- app/Views/*
+	ignoreErrors:
+	universalObjectCratesClasses:
+		- CodeIgniter\Entity
+		- CodeIgniter\Entity\Entity
+		- Faker\Generator
+	scanDirectories:
+		- vendor/codeigniter4/framework/system/Helpers
+	dynamicConstantNames:
+		- APP_NAMESPACE
+		- CI_DEBUG
+		- ENVIRONMENT
