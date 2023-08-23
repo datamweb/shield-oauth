@@ -83,8 +83,8 @@ class ShieldOAuthConfig extends BaseConfig
      * --------------------------------------------------------------------------
      * Turn ON/OFF user data update
      *
-     * If the user is already registered, by default when trying to login, he/she information will be synchronized.
-     * if you want to cancel it, set false.
+     * If the user is already registered, by default when trying to login, their
+     * information will be synchronized. If you want to cancel it, set to false.
      */
     public bool $syncingUserInfo = true;
 
@@ -95,9 +95,9 @@ class ShieldOAuthConfig extends BaseConfig
      * Set your custom call-back name
      *
      * When the user login with his profile, the OAuth server directs him to the following path.
-     * So change this value only when you need to make an customez.
-     * By default it returns to the following path:
-     * http:\\localhost:8080\oauth\call-back
+     * So change this value only when you need to customize it.
+     * By default, it returns to the following path:
+     *      http://localhost:8080/oauth/call-back
      */
     public string $call_back_route = 'call-back';
 }
