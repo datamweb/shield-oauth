@@ -16,6 +16,7 @@ namespace Datamweb\ShieldOAuth\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Shield\Entities\User;
+use CodeIgniter\Shield\Models\LoginModel;
 use Datamweb\ShieldOAuth\Libraries\Basic\ControllersInterface;
 
 class OAuthController extends BaseController implements ControllersInterface
