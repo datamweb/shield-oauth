@@ -25,10 +25,8 @@ class Services extends BaseService
      * Create and share new class instances
      *
      * More Info @see https://codeigniter.com/user_guide/concepts/services.html
-     *
-     * @return mixed|ShieldOAuth
      */
-    public static function ShieldOAuth(bool $getShared = true)
+    public static function ShieldOAuth(bool $getShared = true): ShieldOAuth
     {
         if ($getShared) {
             return static::getSharedInstance('ShieldOAuth');
