@@ -30,8 +30,8 @@ composer require datamweb/shield-oauth:dev-main
 > 
 >```php     
 > public $psr4 = [
-> // add this line
-> 'Datamweb\ShieldOAuth' => APPPATH . 'ThirdParty/shield-oauth/src',
+>     // add this line
+>     'Datamweb\ShieldOAuth' => APPPATH . 'ThirdParty/shield-oauth/src',
 > ];
 > ``` 
 > to the `app/Config/Autoload.php` file, however we do not recommend this. Please use the Composer.
