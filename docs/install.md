@@ -34,7 +34,7 @@ composer require datamweb/shield-oauth:dev-main
 > 'Datamweb\ShieldOAuth' => APPPATH . 'ThirdParty/shield-oauth/src',
 > ];
 > ``` 
-> to the `app\Config\Autoload.php` file, however we do not recommend this. Please use the Composer.
+> to the `app/Config/Autoload.php` file, however we do not recommend this. Please use the Composer.
 
 ## Add Required Columns
 
@@ -116,7 +116,7 @@ http://localhost:8080/oauth/github
 http://localhost:8080/oauth/yahoo
 <!-- and other OAuth !>
 ```
-However, `Shield OAuth` suggests the following for ease of use. By adding the following commands to the `vendor\codeigniter4\shield\src\Views\login.php` and `vendor\codeigniter4\shield\src\Views\register.php` file, `Shield OAuth` will automatically display all the OAuth you provide as buttons in login/register views.
+However, `Shield OAuth` suggests the following for ease of use. By adding the following commands to the `vendor/codeigniter4/shield/src/Views/login.php` and `vendor/codeigniter4/shield/src/Views/register.php` file, `Shield OAuth` will automatically display all the OAuth you provide as buttons in login/register views.
 
 ```html
 {{ShieldOAuthButtonForLoginPage}}
@@ -135,11 +135,11 @@ Because we have used Bootstrap to make the dropdown button, you need to add the 
 ```
 
 > **Note**
-> When you create a new class in path `app\Libraries\ShieldOAuth`, for example `YahooOAuth.php`, you will have a new link as below, this is done automatically and there is no need to add code and perform special instructions.
+> When you create a new class in path `app/Libraries/ShieldOAuth/`, for example `YahooOAuth.php`, you will have a new link as below, this is done automatically and there is no need to add code and perform special instructions.
 >
 > ```html
 > http://localhost:8080/oauth/yahoo
 > ```
 
 > **Warning**
-> The two views `vendor\codeigniter4\shield\src\Views\login.php` and `vendor\codeigniter4\shield\src\Views\register.php` are the main files of `Shield`, we have included them in order to make the **documentation understandable**, you should definitely use custom views.
+> The two views `vendor/codeigniter4/shield/src/Views/login.php` and `vendor/codeigniter4/shield/src/Views/register.php` are the main files of `Shield`, we have included them in order to make the **documentation understandable**, you should definitely use custom views.

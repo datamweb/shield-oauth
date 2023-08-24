@@ -13,7 +13,7 @@ What is important in receiving the keys in each of the services is the **Callbac
 ```
 https://yourBaseUrl.com/oauth/call-back
 ```
-`Shield OAuth` allows you to put another expression in the place of `call-back`, for this you need to make the necessary changes in the `app\Config\ShieldOAuthConfig.php` file.
+`Shield OAuth` allows you to put another expression in the place of `call-back`, for this you need to make the necessary changes in the `app/Config/ShieldOAuthConfig.php` file.
 
 ```php
     public string $call_back_route = 'any-name-for-call-back';
