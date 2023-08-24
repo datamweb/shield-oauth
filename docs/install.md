@@ -60,8 +60,8 @@ php spark migrate -n Datamweb\ShieldOAuth
 ```php 
 public array $usersColumnsName = [
     'first_name' => 'first_name',
-    'last_name' => 'last_name',
-    'avatar' => 'avatar',
+    'last_name'  => 'last_name',
+    'avatar'     => 'avatar',
 ];
 ```
 
@@ -96,12 +96,12 @@ You can see [How To Get Keys](get_keys.md) for instructions on how to get the ke
 ```php
 public array $oauthConfigs = [
     'github' => [
-            'client_id' => '8441sgsgsgsgshfgjgykgub08b6',
+            'client_id'     => '8441sgsgsgsgshfgjgykgub08b6',
             'client_secret' => '2336fsdgdfgdfgdfghfdhfghdhdhdhdhd',
             // ...
     ],
     'google' => [
-            'client_id' => '95040vghjhjghjgjgj.apps.googleusercontent.com',
+            'client_id'     => '95040vghjhjghjgjgj.apps.googleusercontent.com',
             'client_secret' => 'fsdfsdfsgdgrdg',
         // ...
     ],

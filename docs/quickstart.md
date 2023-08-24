@@ -37,12 +37,12 @@ callBack address is `https://yourBaseURL.com/oauth/call-back`.
 ```php
 public array $oauthConfigs = [
     'github' => [
-            'client_id' => '8441sgsgsgsgshfgjgykgub08b6',
+            'client_id'     => '8441sgsgsgsgshfgjgykgub08b6',
             'client_secret' => '2336fsdgdfgdfgdfghfdhfghdhdhdhdhd',
             // ...
     ],
     'google' => [
-            'client_id' => '95040vghjhjghjgjgj.apps.googleusercontent.com',
+            'client_id'     => '95040vghjhjghjgjgj.apps.googleusercontent.com',
             'client_secret' => 'fsdfsdfsgdgrdg',
         // ...
     ],

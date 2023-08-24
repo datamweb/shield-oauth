@@ -31,7 +31,7 @@ This command will automatically generate new files *ExampleOAuth.php*, *ShieldOA
 public array $oauthConfigs = [
     // ..
     'example' => [
-        'client_id' => 'Get this from the OAuth server',
+        'client_id'     => 'Get this from the OAuth server',
         'client_secret' => 'Get this from the OAuth server',
 
         'allow_login' => true
@@ -158,7 +158,7 @@ class ExampleOAuth extends AbstractOAuth
 public array $oauthConfigs = [
     //...
     'example' => [
-        'client_id' => 'Get this from the OAuth server',
+        'client_id'     => 'Get this from the OAuth server',
         'client_secret' => 'Get this from the OAuth server',
 
         'allow_login' => true
@@ -175,7 +175,7 @@ return [
     // ...
     'Example' => [
         'not_allow' => 'Now you can\'t login or register with Example!',
-        'example'     => 'Example',
+        'example'   => 'Example',
     ],
     // ...
 ];
@@ -247,11 +247,11 @@ class YahooOAuth extends AbstractOAuth
             //send request to API URL
             $response = $client->request('POST', self::$API_TOKEN_URL, [
                 'form_params' => [
-                        'client_id' => $this->client_id ,
+                        'client_id'     => $this->client_id ,
                         'client_secret' => $this->client_secret ,
-                        'redirect_uri' => $this->callback_url,
-                        'code' => $allGet['code'],
-                        'grant_type' => 'authorization_code'
+                        'redirect_uri'  => $this->callback_url,
+                        'code'          => $allGet['code'],
+                        'grant_type'    => 'authorization_code'
                 ],
                 'http_errors' => false,
             ]);
