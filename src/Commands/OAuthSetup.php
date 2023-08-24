@@ -21,35 +21,45 @@ class OAuthSetup extends Setup
     /**
      * The group the command is lumped under
      * when listing commands.
+     *
+     * @var string
      */
-    protected string $group = 'ShieldOAuth';
+    protected $group = 'ShieldOAuth';
 
     /**
      * The Command's name
+     *
+     * @var string
      */
-    protected string $name = 'make:oauthconfig';
+    protected $name = 'make:oauthconfig';
 
     /**
      * the Command's short description
+     *
+     * @var string
      */
-    protected string $description = 'Generate file ShieldOAuthConfig in path APPPATH\Config.';
+    protected $description = 'Generate file ShieldOAuthConfig in path APPPATH\Config.';
 
     /**
      * the Command's usage
+     *
+     * @var string
      */
-    protected string $usage = 'make:oauthconfig';
+    protected $usage = 'make:oauthconfig';
 
     /**
      * the Command's Arguments
+     *
+     * @var array
      */
-    protected array $arguments = [];
+    protected $arguments = [];
 
     /**
      * the Command's Options
      *
      * @var array<string, string>
      */
-    protected array $options = [
+    protected $options = [
         '-f' => 'Force overwrite ALL existing files in destination.',
     ];
 
@@ -60,7 +70,7 @@ class OAuthSetup extends Setup
      */
     protected $sourcePath;
 
-    protected string $distPath = APPPATH;
+    protected $distPath = APPPATH;
     private ContentReplacer $replacer;
 
     /**

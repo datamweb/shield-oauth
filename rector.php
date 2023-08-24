@@ -91,6 +91,11 @@ return static function (RectorConfig $rectorConfig): void {
 
         // May load view files directly when detecting classes
         StringClassNameToClassConstantRector::class,
+
+        TypedPropertyFromAssignsRector::class => [
+            __DIR__ . '/src/Commands/OAuthSetup.php',
+            __DIR__ . '/src/Commands/Generators/NewShieldOauthGenerator.php',
+        ],
     ]);
 
     // auto import fully qualified class names

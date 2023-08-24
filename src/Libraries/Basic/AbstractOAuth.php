@@ -15,7 +15,7 @@ namespace Datamweb\ShieldOAuth\Libraries\Basic;
 
 abstract class AbstractOAuth
 {
-    public ?string $token = null;
+    protected string $token;
 
     abstract protected function makeGoLink(string $state): string;
 

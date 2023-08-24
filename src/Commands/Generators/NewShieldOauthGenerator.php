@@ -24,8 +24,10 @@ class NewShieldOauthGenerator extends BaseCommand
 
     /**
      * The Command's Group
+     *
+     * @var string
      */
-    protected string $group = 'ShieldOAuth';
+    protected $group = 'ShieldOAuth';
 
     /**
      * The Command's Name
@@ -36,20 +38,24 @@ class NewShieldOauthGenerator extends BaseCommand
 
     /**
      * The Command's Description
+     *
+     * @var string
      */
-    protected string $description = 'Adds new OAuth to Shield OAuth.';
+    protected $description = 'Adds new OAuth to Shield OAuth.';
 
     /**
      * The Command's Usage
+     *
+     * @var string
      */
-    protected string $usage = 'make:oauth [<name>] [options]';
+    protected $usage = 'make:oauth [<name>] [options]';
 
     /**
      * The Command's Arguments
      *
      * @var array<string, string>
      */
-    protected array $arguments = [
+    protected $arguments = [
         'name' => 'The name of the new OAuth without the `OAuth` suffix. The `OAuth` suffix will be automatically added for you.',
     ];
 
@@ -58,7 +64,7 @@ class NewShieldOauthGenerator extends BaseCommand
      *
      * @var array<string, string>
      */
-    protected array $options = [
+    protected $options = [
         '--force' => 'Force overwrite existing file.',
     ];
 
