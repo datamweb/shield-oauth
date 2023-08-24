@@ -16,7 +16,8 @@ Add `first_name`, `last_name`, and `avatar` columns to table `users` :
 ```console
 php spark migrate -n Datamweb\ShieldOAuth
 ```
- ### Step 3 : 
+
+### Step 3 : 
 
  - Add `{{ShieldOAuthButtonForLoginPage}}` to `vendor\codeigniter4\shield\src\Views\login.php`
  - Add `{{ShieldOAuthButtonForRegisterPage}}` to `vendor\codeigniter4\shield\src\Views\register.php`
@@ -29,7 +30,7 @@ php spark migrate -n Datamweb\ShieldOAuth
 ```
  to `vendor\codeigniter4\shield\src\Views\login.php` and `vendor\codeigniter4\shield\src\Views\register.php`.
  
-  ### Step 4 : 
+### Step 4 : 
 
 Receive keys `client_id` and `client_secret` from each OAuth server. and setting them in file `app\Config\ShieldOAuthConfig.php`.
 
