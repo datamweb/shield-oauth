@@ -13,15 +13,16 @@ declare(strict_types=1);
 
 namespace Datamweb\ShieldOAuth\Libraries;
 
+use Config\Services;
 use Datamweb\ShieldOAuth\Libraries\Basic\AbstractOAuth;
 use Exception;
 
 class GithubOAuth extends AbstractOAuth
 {
-    public static $API_CODE_URL      = 'https://github.com/login/oauth/authorize';
-    public static $API_TOKEN_URL     = 'https://github.com/login/oauth/access_token';
-    public static $API_USER_INFO_URL = 'https://api.github.com/user';
-    private static $APPLICATION_NAME = 'ShieldOAuth';
+    public static string $API_CODE_URL      = 'https://github.com/login/oauth/authorize';
+    public static string $API_TOKEN_URL     = 'https://github.com/login/oauth/access_token';
+    public static string $API_USER_INFO_URL = 'https://api.github.com/user';
+    private static string $APPLICATION_NAME = 'ShieldOAuth';
     protected string $token;
     protected $client;
     protected $config;
@@ -32,7 +33,7 @@ class GithubOAuth extends AbstractOAuth
     public function __construct(string $token = '')
     {
         $this->token  = $token;
-        $this->client = \Config\Services::curlrequest();
+        $this->client = Services::curlrequest();
 
         $this->config        = config('ShieldOAuthConfig');
         $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
@@ -40,7 +41,7 @@ class GithubOAuth extends AbstractOAuth
         $this->client_secret = $this->config->oauthConfigs['github']['client_secret'];
     }
 
-    public function makeGoLink(string $state): string
+    protected function makeGoLink(string $state): string
     {
         return $redirectUrl = self::$API_CODE_URL . "?client_id={$this->client_id}&redirect_uri={$this->callback_url}&scope=user%3Aemail&response_type=code&state={$state}";
     }

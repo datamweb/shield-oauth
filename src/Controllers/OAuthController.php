@@ -118,7 +118,7 @@ class OAuthController extends BaseController implements ControllersInterface
 
     private function checkAntiForgery(string $state): bool
     {
-        return (bool) ($state === session()->get('state'));
+        return $state === session()->get('state');
     }
 
     private function checkExistenceUser(array $find = []): bool
@@ -127,7 +127,7 @@ class OAuthController extends BaseController implements ControllersInterface
         // $find = ['email' => $this->userInfo()->email];
         $findUser = $users->findByCredentials($find);
 
-        return (bool) ($findUser !== null);
+        return $findUser !== null;
     }
 
     private function syncingUserInfo(array $find = [], array $updateFildes = []): int

@@ -127,7 +127,7 @@ class ShieldOAuth
 
         $Button .= '<a href=' . base_url('oauth/google') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Google.google') . '</a>';
         $Button .= '<a href=' . base_url('oauth/github') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Github.github') . '</a>';
-        if (count($this->otherOAuth()) > 0) {
+        if ($this->otherOAuth() !== []) {
             $Button .= "<div class='btn-group' role='group'>
                             <button type='button' class='btn btn-outline-secondary dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false'>"
                             . lang('ShieldOAuthLang.other') . "
@@ -141,10 +141,8 @@ class ShieldOAuth
             $Button .= '</ul></div>';
         }
 
-        $Button .= '
+        return $Button . '
         </div>
         </div>';
-
-        return $Button;
     }
 }

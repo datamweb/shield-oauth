@@ -11,17 +11,21 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
+use CodeIgniter\Router\RouteCollection;
+use Datamweb\ShieldOAuth\Config\ShieldOAuthConfig;
+use Datamweb\ShieldOAuth\Libraries\Basic\ShieldOAuth;
+
 /**
- * @var CodeIgniter\Router\RouteCollection $routes
+ * @var RouteCollection $routes
  */
 $routes->group('oauth', ['namespace' => '\Datamweb\ShieldOAuth\Controllers'], static function ($routes): void {
-    /** @var \Datamweb\ShieldOAuth\Libraries\Basic\ShieldOAuth $shieldOAuthLib */
+    /** @var ShieldOAuth $shieldOAuthLib */
     $shieldOAuthLib = service('ShieldOAuth');
 
     $routes->addPlaceholder('allOAuthList', $shieldOAuthLib->allOAuth());
     $routes->get('(:allOAuthList)', 'OAuthController::redirectOAuth/$1');
 
-    /** @var \Datamweb\ShieldOAuth\Config\ShieldOAuthConfig $config */
+    /** @var ShieldOAuthConfig $config */
     $config = config('ShieldOAuthConfig');
 
     $routes->get($config->call_back_route, 'OAuthController::callBack');

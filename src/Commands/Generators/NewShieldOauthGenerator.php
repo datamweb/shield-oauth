@@ -24,10 +24,8 @@ class NewShieldOauthGenerator extends BaseCommand
 
     /**
      * The Command's Group
-     *
-     * @var string
      */
-    protected $group = 'ShieldOAuth';
+    protected string $group = 'ShieldOAuth';
 
     /**
      * The Command's Name
@@ -38,24 +36,20 @@ class NewShieldOauthGenerator extends BaseCommand
 
     /**
      * The Command's Description
-     *
-     * @var string
      */
-    protected $description = 'Adds new OAuth to Shield OAuth.';
+    protected string $description = 'Adds new OAuth to Shield OAuth.';
 
     /**
      * The Command's Usage
-     *
-     * @var string
      */
-    protected $usage = 'make:oauth [<name>] [options]';
+    protected string $usage = 'make:oauth [<name>] [options]';
 
     /**
      * The Command's Arguments
      *
      * @var array<string, string>
      */
-    protected $arguments = [
+    protected array $arguments = [
         'name' => 'The name of the new OAuth without the `OAuth` suffix. The `OAuth` suffix will be automatically added for you.',
     ];
 
@@ -64,16 +58,14 @@ class NewShieldOauthGenerator extends BaseCommand
      *
      * @var array<string, string>
      */
-    protected $options = [
+    protected array $options = [
         '--force' => 'Force overwrite existing file.',
     ];
 
     /**
      * Path to the app folder
-     *
-     * @var string
      */
-    protected $distPath = APPPATH;
+    protected string $distPath = APPPATH;
 
     /**
      * The ContentReplacer class
