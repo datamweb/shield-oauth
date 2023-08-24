@@ -7,7 +7,7 @@
 [![Latest Stable Version](http://poser.pugx.org/datamweb/shield-oauth/v?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Total Downloads](http://poser.pugx.org/datamweb/shield-oauth/downloads?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Latest Unstable Version](http://poser.pugx.org/datamweb/shield-oauth/v/unstable?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![License](http://poser.pugx.org/datamweb/shield-oauth/license?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![PHP Version Require](http://poser.pugx.org/datamweb/shield-oauth/require/php?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth)
 
 
-`Shield OAuth` helps you to provide the possibility of login or registering users through the OAuth service. Currently, `Shield OAuth` supports `Google OAuth` and `Github OAuth` by default, but it allows you to implement it for any other service, including Yahoo, Facebook, Twitter, LinkedIn, GitLab and ..., this is very easy. Just create a class in route `app\Libraries\ShieldOAuth`! 
+`Shield OAuth` helps you to provide the possibility of login or registering users through the OAuth service. Currently, `Shield OAuth` supports `Google OAuth` and `GitHub OAuth` by default, but it allows you to implement it for any other service, including Yahoo, Facebook, Twitter, LinkedIn, GitLab and ..., this is very easy. Just create a class in route `app\Libraries\ShieldOAuth`! 
 more info see [How to add other services](add_other_oauth.md).
 
 ## Links:

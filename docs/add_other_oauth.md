@@ -1,6 +1,6 @@
 # Adding New OAuth To Shield OAuth
 
-Shield OAuth supports *Google OAuth* and *Github OAuth* out-of-the-box and also provides an easy way to connect any server that offers **OAuth** to it. This guide explains how to achieve this.
+Shield OAuth supports *Google OAuth* and *GitHub OAuth* out-of-the-box and also provides an easy way to connect any server that offers **OAuth** to it. This guide explains how to achieve this.
 
 - [Adding New OAuth to Shield OAuth](#adding-new-oauth-to-shield-oauth) 
   - [Setup Instruction](#setup-instruction)
