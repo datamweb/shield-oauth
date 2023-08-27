@@ -1,5 +1,7 @@
 # Shield OAuth Documentation
 [![PHPCSFixer](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcsfixer.yml)
+[![PHPStan](https://github.com/datamweb/shield-oauth/actions/workflows/phpstan.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpstan.yml)
+[![Rector](https://github.com/datamweb/shield-oauth/actions/workflows/rector.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/rector.yml)
 [![PHPCPD](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml)
 
 <p align="center"><img src="https://github.com/datamweb/my-repository-files/blob/main/shield-oauth/image/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
