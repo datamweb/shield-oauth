@@ -93,11 +93,11 @@ $ignoreErrors[] = [
 // 	'count' => 1,
 // 	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
 // ];
-$ignoreErrors[] = [
-	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
-];
+// $ignoreErrors[] = [
+// 	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
+// ];
 $ignoreErrors[] = [
 	'message' => '#^Call to deprecated function random_string\\(\\)\\:
 The type \'basic\', \'md5\', and \'sha1\' are deprecated\\. They are not cryptographically secure\\.$#',
@@ -129,10 +129,10 @@ $ignoreErrors[] = [
 // 	'count' => 1,
 // 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
 // ];
-$ignoreErrors[] = [
-	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
-];
+// $ignoreErrors[] = [
+// 	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
+// ];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];
