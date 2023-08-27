@@ -42,7 +42,7 @@ class GithubOAuth extends AbstractOAuth
         $this->client_secret = $this->config->oauthConfigs['github']['client_secret'];
     }
 
-    protected function makeGoLink(string $state): string
+    public function makeGoLink(string $state): string
     {
         return $redirectUrl = self::$API_CODE_URL . "?client_id={$this->client_id}&redirect_uri={$this->callback_url}&scope=user%3Aemail&response_type=code&state={$state}";
     }

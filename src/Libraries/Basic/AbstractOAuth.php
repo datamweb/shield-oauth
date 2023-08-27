@@ -17,7 +17,7 @@ abstract class AbstractOAuth
 {
     protected string $token;
 
-    abstract protected function makeGoLink(string $state): string;
+    abstract public function makeGoLink(string $state): string;
 
     abstract protected function fetchAccessTokenWithAuthCode(array $allGet): void;
 

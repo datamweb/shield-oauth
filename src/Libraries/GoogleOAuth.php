@@ -42,7 +42,7 @@ class GoogleOAuth extends AbstractOAuth
         $this->client_secret = $this->config->oauthConfigs['google']['client_secret'];
     }
 
-    protected function makeGoLink(string $state): string
+    public function makeGoLink(string $state): string
     {
         return self::$API_CODE_URL . "?response_type=code&client_id={$this->client_id}&scope=openid%20email%20profile&redirect_uri={$this->callback_url}&state={$state}";
     }
