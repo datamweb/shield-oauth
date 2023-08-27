@@ -93,7 +93,6 @@ class GoogleOAuth extends AbstractOAuth
 
     protected function setColumnsName(string $nameOfProcess, $userInfo): array
     {
-        $usersColumnsName = [];
         if ($nameOfProcess === 'syncingUserInfo') {
             return [
                 $this->config->usersColumnsName['first_name'] => $userInfo->name,
