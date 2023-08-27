@@ -93,8 +93,9 @@ class GoogleOAuth extends AbstractOAuth
 
     protected function setColumnsName(string $nameOfProcess, $userInfo): array
     {
+        $usersColumnsName = [];
         if ($nameOfProcess === 'syncingUserInfo') {
-            $usersColumnsName = [
+            return [
                 $this->config->usersColumnsName['first_name'] => $userInfo->name,
                 $this->config->usersColumnsName['last_name']  => $userInfo->family_name,
                 $this->config->usersColumnsName['avatar']     => $userInfo->picture,
@@ -102,7 +103,7 @@ class GoogleOAuth extends AbstractOAuth
         }
 
         if ($nameOfProcess === 'newUser') {
-            $usersColumnsName = [
+            return [
                 // users tbl                                    // OAuth
                 'username'                                    => $userInfo->given_name,
                 'email'                                       => $userInfo->email,
@@ -114,6 +115,6 @@ class GoogleOAuth extends AbstractOAuth
             ];
         }
 
-        return $usersColumnsName;
+        return [];
     }
 }

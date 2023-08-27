@@ -93,8 +93,9 @@ class GithubOAuth extends AbstractOAuth
 
     protected function setColumnsName(string $nameOfProcess, $userInfo): array
     {
+        $usersColumnsName = [];
         if ($nameOfProcess === 'syncingUserInfo') {
-            $usersColumnsName = [
+            return [
                 $this->config->usersColumnsName['first_name'] => $userInfo->name,
                 $this->config->usersColumnsName['last_name']  => $userInfo->name,
                 $this->config->usersColumnsName['avatar']     => $userInfo->avatar_url,
@@ -102,7 +103,7 @@ class GithubOAuth extends AbstractOAuth
         }
 
         if ($nameOfProcess === 'newUser') {
-            $usersColumnsName = [
+            return [
                 'username'                                    => $userInfo->login,
                 'email'                                       => $userInfo->email,
                 'password'                                    => random_string('crypto', 32),
@@ -113,6 +114,6 @@ class GithubOAuth extends AbstractOAuth
             ];
         }
 
-        return $usersColumnsName;
+        return [];
     }
 }
