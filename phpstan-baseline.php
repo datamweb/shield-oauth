@@ -83,16 +83,16 @@ $ignoreErrors[] = [
 	'count' => 1,
 	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
 ];
-$ignoreErrors[] = [
-	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GithubOAuth\\:\\:\\$client has no type specified\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GithubOAuth\\:\\:\\$config has no type specified\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
-];
+// $ignoreErrors[] = [
+// 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GithubOAuth\\:\\:\\$client has no type specified\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
+// ];
+// $ignoreErrors[] = [
+// 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GithubOAuth\\:\\:\\$config has no type specified\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GithubOAuth.php',
+// ];
 $ignoreErrors[] = [
 	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
 	'count' => 1,
@@ -119,16 +119,16 @@ $ignoreErrors[] = [
 	'count' => 1,
 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
 ];
-$ignoreErrors[] = [
-	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GoogleOAuth\\:\\:\\$client has no type specified\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GoogleOAuth\\:\\:\\$config has no type specified\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
-];
+// $ignoreErrors[] = [
+// 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GoogleOAuth\\:\\:\\$client has no type specified\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
+// ];
+// $ignoreErrors[] = [
+// 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Libraries\\\\GoogleOAuth\\:\\:\\$config has no type specified\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
+// ];
 $ignoreErrors[] = [
 	'message' => '#^Variable \\$usersColumnsName might not be defined\\.$#',
 	'count' => 1,
