@@ -104,11 +104,11 @@ class GoogleOAuth extends AbstractOAuth
         if ($nameOfProcess === 'newUser') {
             return [
                 // users tbl                                    // OAuth
-                'username'                                    => $userInfo->given_name,
+                'username'                                    => $userInfo->email,
                 'email'                                       => $userInfo->email,
                 'password'                                    => random_string('crypto', 32),
                 'active'                                      => $userInfo->email_verified,
-                $this->config->usersColumnsName['first_name'] => $userInfo->name,
+                $this->config->usersColumnsName['first_name'] => $userInfo->given_name,
                 $this->config->usersColumnsName['last_name']  => $userInfo->family_name,
                 $this->config->usersColumnsName['avatar']     => $userInfo->picture,
             ];
