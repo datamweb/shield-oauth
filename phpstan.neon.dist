@@ -8,7 +8,6 @@ parameters:
 	bootstrapFiles:
 		- vendor/codeigniter4/framework/system/Test/bootstrap.php
 	excludePaths:
-		- app/Config/Routes.php
 		- app/Views/*
 	ignoreErrors:
 	universalObjectCratesClasses:
