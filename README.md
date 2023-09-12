@@ -28,7 +28,7 @@ In `Shield OAuth`, it has been considered to be easy to use by developers and th
 In the documentation, I have explained how to **install**, **configure**, and how to **create custom class `NewOAuth`** connections to other services. Documentation for `Shield OAuth` can be found on the [docs](/docs/index.md).
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
 
 ## Acknowledgements
 Every open-source project depends on it's contributors to be a success. The following users have contributed in one manner or another in making Codeigniter `Shield OAuth`:
