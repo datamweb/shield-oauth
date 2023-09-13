@@ -23,7 +23,7 @@ Installation is done through [Composer](https://getcomposer.org). The example as
 If you have it installed as a phar, or otherwise you will need to adjust the way you call composer itself.
 
 ```console
-composer require datamweb/shield-oauth:dev-main
+composer require datamweb/shield-oauth:dev-develop
 ```
 > **Note**
 > You can manually install `Shield OAuth` by extracting the project file to path `app\ThirdParty\shield-oauth` and then adding 
