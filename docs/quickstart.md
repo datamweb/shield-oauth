@@ -6,7 +6,7 @@ It is strongly recommended that only people who have already read the documents 
 
 Installing the package by Composer :
 ```console
-composer require datamweb/shield-oauth:dev-main
+composer require datamweb/shield-oauth:dev-develop
 ```
 
 ### Step 2 :
