@@ -14,7 +14,8 @@ theme:
     - navigation.sections
     - content.code.copy
     - navigation.footer
-    - content.action.view
+    - search.suggest
+    - search.highlight
 extra:
   homepage: https://codeigniter4.ir
   generator: false
@@ -22,21 +23,25 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/datamweb/shield-oauth
       name: GitHub
-  copyright: Copyright &copy; 2023 Pooya Parsa DadashiSSS
+  copyright: Copyright &copy; 2023 Pooya Parsa Dadashi
 
 repo_url: https://github.com/datamweb/shield-oauth
 
 plugins:
+  - search
   - git-revision-date-localized:
       enable_creation_date: true
 
 markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
-      use_pygments: true
+      use_pygments: false
 
 extra_css:
   - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js
 
 nav:
   - Home: index.md
