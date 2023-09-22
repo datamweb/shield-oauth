@@ -16,6 +16,7 @@ theme:
     - navigation.footer
     - search.suggest
     - search.highlight
+    - content.action.edit
 extra:
   homepage: https://codeigniter4.ir
   generator: false
@@ -26,6 +27,7 @@ extra:
   copyright: Copyright &copy; 2023 Pooya Parsa Dadashi
 
 repo_url: https://github.com/datamweb/shield-oauth
+edit_uri: edit/develop/docs/
 
 plugins:
   - search
@@ -35,7 +37,7 @@ plugins:
 markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
-      use_pygments: false
+      use_pygments: true
 
 extra_css:
   - https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css
