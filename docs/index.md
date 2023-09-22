@@ -4,7 +4,7 @@
 [![Rector](https://github.com/datamweb/shield-oauth/actions/workflows/rector.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/rector.yml)
 [![PHPCPD](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml/badge.svg)](https://github.com/datamweb/shield-oauth/actions/workflows/phpcpd.yml)
 
-<p align="center"><img src="https://github.com/datamweb/my-repository-files/blob/main/shield-oauth/image/shieldOAuthLogo.png" alt="Logo Shield OAuth"></p>
+<p align="center"><img src="https://github.com/datamweb/my-repository-files/blob/main/shield-oauth/image/shieldOAuthLogo.png?raw=true" alt="Logo Shield OAuth"></p>
 
 [![Latest Stable Version](https://poser.pugx.org/datamweb/shield-oauth/v?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Total Downloads](https://poser.pugx.org/datamweb/shield-oauth/downloads?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![Latest Unstable Version](https://poser.pugx.org/datamweb/shield-oauth/v/unstable?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![License](https://poser.pugx.org/datamweb/shield-oauth/license?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth) [![PHP Version Require](https://poser.pugx.org/datamweb/shield-oauth/require/php?style=for-the-badge)](https://packagist.org/packages/datamweb/shield-oauth)
 
