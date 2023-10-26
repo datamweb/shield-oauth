@@ -135,4 +135,15 @@ $ignoreErrors[] = [
 // 	'path' => __DIR__ . '/src/Libraries/GoogleOAuth.php',
 // ];
 
+$ignoreErrors[] = [
+	'message' => '#^Function auth not found\\.$#',
+	'count' => 3,
+	'path' => __DIR__ . '/src/Controllers/OAuthController.php',
+];
+$ignoreErrors[] = [
+	'message' => '#^Function user_id not found\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/src/Controllers/OAuthController.php',
+];
+
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];
