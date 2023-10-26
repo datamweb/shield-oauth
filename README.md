@@ -20,7 +20,7 @@ In `Shield OAuth`, it has been considered to be easy to use by developers and th
 ## Requirements
 
 - [Composer](https://getcomposer.org)
-- [Codeigniter](https://codeigniter4.github.io/CodeIgniter4/installation/installing_composer.html#installation) **v4.2.7** or later
+- [Codeigniter](https://codeigniter4.github.io/CodeIgniter4/installation/installing_composer.html#installation) **v4.3.5** or later
 - [Codeigniter Shield](https://github.com/codeigniter4/shield)
 - [cURL Library](https://www.php.net/manual/en/book.curl.php) to be installed in your version of PHP
 
