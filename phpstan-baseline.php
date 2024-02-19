@@ -6,11 +6,11 @@ $ignoreErrors[] = [
 	'count' => 1,
 	'path' => __DIR__ . '/src/Commands/OAuthSetup.php',
 ];
-$ignoreErrors[] = [
-	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Commands\\\\OAuthSetup\\:\\:\\$arguments type has no value type specified in iterable type array\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Commands/OAuthSetup.php',
-];
+// $ignoreErrors[] = [
+// 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Commands\\\\OAuthSetup\\:\\:\\$arguments type has no value type specified in iterable type array\\.$#',
+// 	'count' => 1,
+// 	'path' => __DIR__ . '/src/Commands/OAuthSetup.php',
+// ];
 $ignoreErrors[] = [
 	'message' => '#^Property Datamweb\\\\ShieldOAuth\\\\Commands\\\\OAuthSetup\\:\\:\\$distPath has no type specified\\.$#',
 	'count' => 1,
