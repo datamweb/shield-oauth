@@ -50,7 +50,7 @@ class OAuthSetup extends Setup
     /**
      * the Command's Arguments
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $arguments = [];
 
