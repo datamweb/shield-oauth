@@ -38,8 +38,8 @@ class GoogleOAuth extends AbstractOAuth
 
         $this->config        = config('ShieldOAuthConfig');
         $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
-        $this->client_id     = $this->config->oauthConfigs['google']['client_id'];
-        $this->client_secret = $this->config->oauthConfigs['google']['client_secret'];
+        $this->client_id     = env('ShieldOAuthConfig.google.client_id', $this->config->oauthConfigs['google']['client_id']);
+        $this->client_secret = env('ShieldOAuthConfig.google.client_secret', $this->config->oauthConfigs['google']['client_secret']);
     }
 
     public function makeGoLink(string $state): string
