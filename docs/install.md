@@ -82,7 +82,14 @@ public $globals = [
 ## Set keys 
 
 Receive keys `client_id` and `client_secret` from each OAuth server.
-To connect to any of the servers, you need to receive`client_id` and `client_secret` from them and then set them in file `app/Config/ShieldOAuthConfig`.
+To connect to any of the servers, you need to receive`client_id` and `client_secret` from them and then set them in file **.env** Or `app/Config/ShieldOAuthConfig`.
+
+We suggest that you set the keys of each service in file **.env** instead of using **app/Config/ShieldOAuthConfig**. For example, you can proceed as follows.
+
+```env
+ShieldOAuthConfig.google.client_id = Your google client_id key
+ShieldOAuthConfig.google.client_secret = Your google client_secret key
+```
 
 > **Note**
 > By default, there is no file `app/Config/ShieldOAuthConfig`. It is strongly recommended to set the keys to `app/Config/ShieldOAuthConfig`. This behavior will make sure that there will be no problems for the settings you have made in case of update `Shield OAuth`. To create it, you can use the following command:
