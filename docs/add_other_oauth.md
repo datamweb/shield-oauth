@@ -2,10 +2,12 @@
 
 Shield OAuth supports *Google OAuth* and *GitHub OAuth* out-of-the-box and also provides an easy way to connect any server that offers **OAuth** to it. This guide explains how to achieve this.
 
-- [Adding New OAuth to Shield OAuth](#adding-new-oauth-to-shield-oauth) 
+- [Adding New OAuth To Shield OAuth](#adding-new-oauth-to-shield-oauth)
   - [Setup Instruction](#setup-instruction)
     - [Command Setup](#command-setup)
     - [Manual Setup](#manual-setup)
+  - [Available Methods](#available-methods)
+  - [YahooOAuth Example Class](#yahoooauth-example-class)
 
 ## Setup Instruction
 
@@ -228,8 +230,8 @@ class YahooOAuth extends AbstractOAuth
 
         $this->config        = config('ShieldOAuthConfig');
         $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
-        $this->client_id     = $this->config->oauthConfigs['yahoo']['client_id'];
-        $this->client_secret = $this->config->oauthConfigs['yahoo']['client_secret'];
+        $this->client_id     = env('ShieldOAuthConfig.yahoo.client_id', $this->config->oauthConfigs['yahoo']['client_id']);
+        $this->client_secret = env('ShieldOAuthConfig.yahoo.client_secret', $this->config->oauthConfigs['yahoo']['client_secret']);
     }
 
     public function makeGoLink(string $state): string
