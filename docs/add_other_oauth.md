@@ -205,20 +205,23 @@ declare(strict_types=1);
 
 namespace App\Libraries\ShieldOAuth;
 
+use CodeIgniter\HTTP\CURLRequest;
+use Config\Services;
+use Datamweb\ShieldOAuth\Config\ShieldOAuthConfig;
 use Datamweb\ShieldOAuth\Libraries\Basic\AbstractOAuth;
 use Exception;
 
 class YahooOAuth extends AbstractOAuth
 {
     // https://developer.yahoo.com/oauth2/guide/flows_authcode/#refresh-token-label
-    static private $API_CODE_URL      = 'https://api.login.yahoo.com/oauth2/request_auth';
-    static private $API_TOKEN_URL     = 'https://api.login.yahoo.com/oauth2/get_token';
-    static private $API_USER_INFO_URL = 'https://api.login.yahoo.com/openid/v1/userinfo';
-    static private $APPLICATION_NAME  = 'ShieldOAuth';
+    private static string $API_CODE_URL      = 'https://api.login.yahoo.com/oauth2/request_auth';
+    private static string $API_TOKEN_URL     = 'https://api.login.yahoo.com/oauth2/get_token';
+    private static string $API_USER_INFO_URL = 'https://api.login.yahoo.com/openid/v1/userinfo';
+    private static string $APPLICATION_NAME  = 'ShieldOAuth';
 
     protected string $token;
-    protected $client;
-    protected $config;
+    protected CURLRequest $client;
+    protected ShieldOAuthConfig $config;
     protected string $client_id;
     protected string $client_secret;
     protected string $callback_url;
@@ -226,7 +229,7 @@ class YahooOAuth extends AbstractOAuth
     public function __construct(string $token = '')
     {
         $this->token  = $token;
-        $this->client = \Config\Services::curlrequest();
+        $this->client = Services::curlrequest();
 
         $this->config        = config('ShieldOAuthConfig');
         $this->callback_url  = base_url('oauth/' . $this->config->call_back_route);
