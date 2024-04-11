@@ -27,7 +27,7 @@ class ShieldOAuth extends Migration
         parent::__construct();
 
         /** @var ShieldOAuthConfig $config */
-        $config           = config(ShieldOAuthConfig::class);
+        $config           = config('ShieldOAuthConfig');
         $this->first_name = $config->usersColumnsName['first_name'];
         $this->last_name  = $config->usersColumnsName['last_name'];
         $this->avatar     = $config->usersColumnsName['avatar'];

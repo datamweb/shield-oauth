@@ -23,7 +23,7 @@ class ShieldOAuthModel extends UserModel
         parent::initialize();
 
         /** @var ShieldOAuthConfig $config */
-        $config = config(ShieldOAuthConfig::class);
+        $config = config('ShieldOAuthConfig');
 
         // Merge properties with parent
         $this->allowedFields = array_merge($this->allowedFields, [
