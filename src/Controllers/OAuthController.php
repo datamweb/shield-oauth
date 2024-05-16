@@ -143,7 +143,7 @@ class OAuthController extends BaseController implements ControllersInterface
 
         $syncingUserInfo = config('ShieldOAuthConfig')->syncingUserInfo;
         if ($syncingUserInfo === true) {
-            $user->fill($updateFildes);
+            $user->fill($updateFields);
         }
         $users->save($user);
 
