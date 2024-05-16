@@ -33,16 +33,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/src/Controllers/OAuthController.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Method Datamweb\\\\ShieldOAuth\\\\Controllers\\\\OAuthController\\:\\:syncingUserInfo\\(\\) has parameter \\$find with no value type specified in iterable type array\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Controllers/OAuthController.php',
-];
-$ignoreErrors[] = [
-	'message' => '#^Method Datamweb\\\\ShieldOAuth\\\\Controllers\\\\OAuthController\\:\\:syncingUserInfo\\(\\) has parameter \\$updateFildes with no value type specified in iterable type array\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/src/Controllers/OAuthController.php',
-];
-$ignoreErrors[] = [
 	'message' => '#^Method Datamweb\\\\ShieldOAuth\\\\Libraries\\\\Basic\\\\AbstractOAuth\\:\\:fetchAccessTokenWithAuthCode\\(\\) has parameter \\$allGet with no value type specified in iterable type array\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/src/Libraries/Basic/AbstractOAuth.php',
