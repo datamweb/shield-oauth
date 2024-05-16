@@ -43,7 +43,7 @@ class ShieldOAuthConfig extends BaseConfig
             'client_secret' => 'Get it from Google',
 
             'allow_login'    => true,
-            'allow_register' => false,
+            'allow_register' => true,
         ],
         // 'yahoo' => [
         //     'client_id'     => 'Get it from Yahoo',
