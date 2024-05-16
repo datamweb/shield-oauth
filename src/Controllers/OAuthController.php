@@ -75,13 +75,19 @@ class OAuthController extends BaseController implements ControllersInterface
 
         $find = ['email' => $userInfo->email];
 
-        if ($this->checkExistenceUser($find) === true) {
-            $updateFildes = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
+        if ($this->checkExistenceUser($find)) {
+            $updateFields = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
 
-            $userid = $this->syncingUserInfo($find, $updateFildes);
+            $userid = $this->syncingUserInfo($find, $updateFields);
         }
 
+        // Create new user if credentials not exist or let users register themselves
         if ($this->checkExistenceUser($find) === false) {
+            // Check config setting first to see if it can register automatically or not
+            if (config('ShieldOAuthConfig')->oauthConfigs[$oauthName]['allow_register'] === false) {
+                return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found'));
+            }
+
             helper('text');
             $users = model('ShieldOAuthModel');
             // new user
@@ -130,14 +136,22 @@ class OAuthController extends BaseController implements ControllersInterface
         return $findUser !== null;
     }
 
-    private function syncingUserInfo(array $find = [], array $updateFildes = []): int
+    /**
+     * Syncs user information based on provided fields.
+     *
+     * @param array<string, string>      $find         Array containing criteria to find the user
+     * @param array<string, string|null> $updateFields Fields to update for the user
+     *
+     * @return int The ID of the user whose information is synced
+     */
+    private function syncingUserInfo(array $find = [], array $updateFields = []): int
     {
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
 
         $syncingUserInfo = config('ShieldOAuthConfig')->syncingUserInfo;
         if ($syncingUserInfo === true) {
-            $user->fill($updateFildes);
+            $user->fill($updateFields);
         }
         $users->save($user);
 

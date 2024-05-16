@@ -147,7 +147,8 @@ class NewShieldOauthGenerator extends BaseCommand
             'client_id' => 'Get it from {$oauthName}',
             'client_secret' => 'Get it from {$oauthName}',
 
-            'allow_login' => true,
+            'allow_login'    => true,
+            'allow_register' => true,
         ],";
 
         // Setup the process of adding the code to the config file

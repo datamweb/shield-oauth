@@ -36,7 +36,8 @@ public array $oauthConfigs = [
         'client_id'     => 'Get this from the OAuth server',
         'client_secret' => 'Get this from the OAuth server',
 
-        'allow_login' => true
+        'allow_login'    => true,
+        'allow_register' => true,
     ],
 ];
 
@@ -163,7 +164,8 @@ public array $oauthConfigs = [
         'client_id'     => 'Get this from the OAuth server',
         'client_secret' => 'Get this from the OAuth server',
 
-        'allow_login' => true
+        'allow_login'    => true,
+        'allow_register' => true,
     ],
     //...
 ];

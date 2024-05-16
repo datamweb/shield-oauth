@@ -18,6 +18,7 @@ return [
     'Callback' => [
         'oauth_class_not_set' => 'خطای رخ داد، به نظر میرسد کلاس OAuth مورد نظر به درستی تنظیم نشده است.',
         'anti_forgery'        => 'متاسفانه، تلاش شما ، یک درخواست جعلی تشخیص داده شد.',
+        'account_not_found'   => 'اکانت پیدا نشد. لطفا ابتدا ثبت نام کنید!',
     ],
 
     // ShieldOAuthButton in views
