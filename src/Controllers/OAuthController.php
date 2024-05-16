@@ -75,7 +75,7 @@ class OAuthController extends BaseController implements ControllersInterface
 
         $find = ['email' => $userInfo->email];
 
-        if ($this->checkExistenceUser($find) === true) {
+        if ($this->checkExistenceUser($find)) {
             $updateFildes = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
 
             $userid = $this->syncingUserInfo($find, $updateFildes);
