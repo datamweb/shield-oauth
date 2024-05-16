@@ -139,7 +139,7 @@ class OAuthController extends BaseController implements ControllersInterface
     /**
      * Syncs user information based on provided fields.
      *
-     * @param array<string, string> $find              Array containing criteria to find the user
+     * @param array<string, string>      $find         Array containing criteria to find the user
      * @param array<string, string|null> $updateFields Fields to update for the user
      *
      * @return int The ID of the user whose information is synced
