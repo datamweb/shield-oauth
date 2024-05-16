@@ -144,7 +144,7 @@ class OAuthController extends BaseController implements ControllersInterface
      *
      * @return int The ID of the user whose information is synced
      */
-    private function syncingUserInfo(array $find = [], array $updateFields = []): int // @phpstan-ignore-line
+    private function syncingUserInfo(array $find = [], array $updateFields = []): int
     {
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
