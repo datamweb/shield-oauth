@@ -141,7 +141,7 @@ class OAuthController extends BaseController implements ControllersInterface
      *
      * @param array $find           Array containing criteria to find the user.
      * @param array $updateFields   Fields to update for the user.
-     *
+     *                              Missing type for iterable values in $updateFields array.
      * @return int                  The ID of the user whose information is synced.
      */
     private function syncingUserInfo(array $find = [], array $updateFields = []): int
