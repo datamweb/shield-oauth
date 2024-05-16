@@ -18,6 +18,7 @@ return [
     'Callback' => [
         'oauth_class_not_set' => 'Une erreur s’est produite, il semble que la classe OAuth n’est pas définie.',
         'anti_forgery'        => 'Votre demande a été détectée comme erronée. Nous sommes désolés!',
+        'account_not_found'   => '(To be translated) Your account not found. Please register first!',
     ],
 
     // ShieldOAuthButton in views
