@@ -18,6 +18,7 @@ return [
     'Callback' => [
         'oauth_class_not_set' => 'An error occurred, it seems that the OAuth Class is not set.',
         'anti_forgery'        => 'Your request has been detected as fake. we are sorry!',
+        'account_not_found'   => 'Your account not found. Please register first!',
     ],
 
     // ShieldOAuthButton in views
