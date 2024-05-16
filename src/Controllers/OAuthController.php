@@ -77,10 +77,11 @@ class OAuthController extends BaseController implements ControllersInterface
 
         if ($this->checkExistenceUser($find)) {
             $updateFields = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
+
             $userid = $this->syncingUserInfo($find, $updateFields);
         }
 
-         // Create new user if credentials not exist or let users register themselves
+        // Create new user if credentials not exist or let users register themselves
         if ($this->checkExistenceUser($find) === false) {
 
             // Check config setting first to see if it can register automatically ?
