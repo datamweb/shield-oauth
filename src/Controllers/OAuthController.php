@@ -76,9 +76,8 @@ class OAuthController extends BaseController implements ControllersInterface
         $find = ['email' => $userInfo->email];
 
         if ($this->checkExistenceUser($find)) {
-            $updateFildes = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
-
-            $userid = $this->syncingUserInfo($find, $updateFildes);
+            $updateFields = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
+            $userid = $this->syncingUserInfo($find, $updateFields);
         }
 
          // Create new user if credentials not exist or let users register themselves
@@ -137,7 +136,7 @@ class OAuthController extends BaseController implements ControllersInterface
         return $findUser !== null;
     }
 
-    private function syncingUserInfo(array $find = [], array $updateFildes = []): int
+    private function syncingUserInfo(array $find = [], array $updateFields = []): int
     {
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
