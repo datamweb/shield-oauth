@@ -80,14 +80,14 @@ class OAuthController extends BaseController implements ControllersInterface
 
             $userid = $this->syncingUserInfo($find, $updateFildes);
         }
-        
+
          // Create new user if credentials not exist or let users register themselves
         if ($this->checkExistenceUser($find) === false) {
             // Check config setting first to see if it can register automatically ?
             if (config('ShieldOAuthConfig')->oauthConfigs[$oauthName]['allow_register'] === false) {
                 return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found'));
             }
-            
+
             helper('text');
             $users = model('ShieldOAuthModel');
             // new user
