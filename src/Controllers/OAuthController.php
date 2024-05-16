@@ -136,6 +136,13 @@ class OAuthController extends BaseController implements ControllersInterface
         return $findUser !== null;
     }
 
+    /**
+     * Syncs user information based on provided fields.
+     *
+     * @param array $find           Array containing criteria to find the user.
+     * @param array $updateFields   Fields to update for the user.
+     * @return int                  The ID of the user whose information is synced.
+     */
     private function syncingUserInfo(array $find = [], array $updateFields = []): int
     {
         $users = model('ShieldOAuthModel');
