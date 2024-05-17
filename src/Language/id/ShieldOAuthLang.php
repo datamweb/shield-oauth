@@ -29,15 +29,15 @@ return [
     // Errors List For all OAuth
     'Github' => [
         'github'    => 'GitHub',
-        'not_allow' => "Sekarang Anda tidak bisa masuk atau mendaftar dengan GitHub!",
+        'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan GitHub!',
     ],
     'Google' => [
         'google'    => 'Google',
-        'not_allow' => "Sekarang Anda tidak bisa masuk atau mendaftar dengan Google!",
+        'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan Google!',
     ],
     // 'Yahoo' => [
     //     'yahoo'     => 'Yahoo',
-    //     'not_allow' => "Sekarang Anda tidak bisa masuk atau mendaftar dengan Yahoo!",
+    //     'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan Yahoo!',
 
     // ],
 ];
