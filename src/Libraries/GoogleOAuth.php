@@ -110,7 +110,7 @@ class GoogleOAuth extends AbstractOAuth
                 'password'                                    => random_string('crypto', 32),
                 'active'                                      => $userInfo->email_verified,
                 $this->config->usersColumnsName['first_name'] => $userInfo->given_name,
-                $this->config->usersColumnsName['last_name']  => $userInfo->family_name,
+                $this->config->usersColumnsName['last_name']  => $userInfo->family_name ?? null,
                 $this->config->usersColumnsName['avatar']     => $userInfo->picture,
             ];
         }
