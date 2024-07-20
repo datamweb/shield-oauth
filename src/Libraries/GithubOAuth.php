@@ -85,11 +85,51 @@ class GithubOAuth extends AbstractOAuth
                 ],
                 'http_errors' => false,
             ]);
+
+            $userInfo = json_decode($response->getBody());
+
+            /**
+             * Note: When making a call to /user, the API will only return the email address the user's explicitly set publicly visible
+             * (or null if the user has not specified a public email address in their profile).
+             */
+            if (empty($userInfo->email)) {
+
+                /**
+                 * The email address is mandatory we have no other choice but to dig deeper.
+                 *
+                 * To retrieve the user's email addresses regardless if their status is set public or not, we need to call /user/emails.
+                 * @see https://docs.github.com/en/rest/users/emails?apiVersion=2022-11-28#list-email-addresses-for-a-user
+                 */
+                $response = $this->client->request('GET', self::$API_USER_INFO_URL.'/emails', [
+                    'headers' => [
+                        'User-Agent'    => self::$APPLICATION_NAME . '/1.0',
+                        'Accept'        => 'application/vnd.github+json',
+                        'Authorization' => 'Bearer ' . $this->getToken(),
+                    ],
+                    'http_errors' => false,
+                ]);
+
+                $emailAddresses = json_decode($response->getBody());
+                
+                /**
+                 * The response can contain multiple email addresses
+                 * so, we'll choose the one marked as primary
+                 * or at least get the first one just to be covered
+                 */
+                $userInfo->email = $emailAddresses[0]->email;
+                
+                foreach ( $emailAddresses as $emailAddress ) {
+                    if ($emailAddress->primary) {
+                        $userInfo->email = $emailAddress->email;
+                        break;
+                    }
+                }
+            }
         } catch (Exception $e) {
             exit($e->getMessage());
         }
 
-        return json_decode($response->getBody());
+        return $userInfo;
     }
 
     protected function setColumnsName(string $nameOfProcess, $userInfo): array
