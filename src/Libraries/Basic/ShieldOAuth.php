@@ -57,7 +57,7 @@ class ShieldOAuth
         $files = new FileCollection();
 
         /** @var Autoload $autoload */
-        $autoload = config(Autoload::class);
+        $autoload = new Autoload();
 
         // Checking if it is installed manually
         if (array_key_exists('Datamweb\ShieldOAuth', $autoload->psr4)) {
