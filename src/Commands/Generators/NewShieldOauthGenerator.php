@@ -103,7 +103,7 @@ class NewShieldOauthGenerator extends BaseCommand
 
         // The proper class name should contain the `OAuth` suffix if it doesn't exist
         $class = str_ireplace('oauth', 'OAuth', $params[0]);
-        if (strpos($class, 'OAuth') === false) {
+        if (! str_contains($class, 'OAuth')) {
             $class .= 'OAuth';
         }
 
