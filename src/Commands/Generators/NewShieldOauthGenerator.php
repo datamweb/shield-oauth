@@ -103,8 +103,6 @@ class NewShieldOauthGenerator extends BaseCommand
 
         // The proper class name should contain the `OAuth` suffix if it doesn't exist
         $class = str_ireplace('oauth', 'OAuth', $params[0]);
-
-        // @phpstan-ignore-next-line
         if (strpos($class, 'OAuth') === false) {
             $class .= 'OAuth';
         }
