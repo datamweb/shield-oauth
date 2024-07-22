@@ -21,10 +21,11 @@ use Exception;
 
 class GithubOAuth extends AbstractOAuth
 {
-    public static string $API_CODE_URL      = 'https://github.com/login/oauth/authorize';
-    public static string $API_TOKEN_URL     = 'https://github.com/login/oauth/access_token';
-    public static string $API_USER_INFO_URL = 'https://api.github.com/user';
-    private static string $APPLICATION_NAME = 'ShieldOAuth';
+    public static string  $API_CODE_URL        = 'https://github.com/login/oauth/authorize';
+    public static string  $API_TOKEN_URL       = 'https://github.com/login/oauth/access_token';
+    public static string  $API_USER_INFO_URL   = 'https://api.github.com/user';         // The /user API returns the user's publicly visible data or null for those that are not set
+    public static string  $API_USER_EMAILS_URL = 'https://api.github.com/user/emails';  // The /user/emails API returns all email addresses for the user, including those that are not set public
+    private static string $APPLICATION_NAME    = 'ShieldOAuth';
     protected string $token;
     protected CURLRequest $client;
     protected ShieldOAuthConfig $config;
@@ -91,42 +92,41 @@ class GithubOAuth extends AbstractOAuth
 
         $userInfo = json_decode($response->getBody(), false);
 
-        /**
-         * The /user API returns only the publicly visible email address or null if none is set.
-         */
+        // the email address is mandatory
         if (empty($userInfo->email)) {
-
-            /**
-             * The /user/emails API returns the user's email addresses regardless if their status is set public or not.
-             * @see https://docs.github.com/en/rest/users/emails?apiVersion=2022-11-28#list-email-addresses-for-a-user
-             */
-            try {
-                $response = $this->client->request('GET', self::$API_USER_INFO_URL . '/emails', [
-                    'headers'     => [
-                        'User-Agent'    => self::$APPLICATION_NAME . '/1.0',
-                        'Accept'        => 'application/vnd.github+json',
-                        'Authorization' => 'Bearer ' . $this->getToken(),
-                    ],
-                    'http_errors' => false,
-                ]);
-            } catch (Exception $e) {
-                exit($e->getMessage());
-            }
-
-            $emailAddresses = json_decode($response->getBody(), false);
-
-            if (empty($emailAddresses)) {
-                throw new Exception('No email addresses found for the user');
-            }
-
-            /**
-             * If multiple email addresses are returned try to get the one marked as primary, otherwise grab the first one
-             */
-            $primaryEmail    = array_filter($emailAddresses, static fn($eMail) => $eMail->primary);
-            $userInfo->email = !empty($primaryEmail) ? array_shift($primaryEmail)->email : array_shift($emailAddresses)->email;
+            $userInfo->email = $this->getUserPrimaryEmail($this->fetchUserEmailsWithToken());
         }
 
         return $userInfo;
+    }
+
+    protected function fetchUserEmailsWithToken()
+    {
+        // send request to API URL
+        try {
+            $response = $this->client->request('GET', self::$API_USER_EMAILS_URL, [
+                'headers' => [
+                    'User-Agent'    => self::$APPLICATION_NAME . '/1.0',
+                    'Accept'        => 'application/vnd.github+json',
+                    'Authorization' => 'Bearer ' . $this->getToken(),
+                ],
+                'http_errors' => false,
+            ]);
+        } catch (Exception $e) {
+            exit($e->getMessage());
+        }
+
+        return json_decode($response->getBody(), false);
+    }
+
+    protected function getUserPrimaryEmail(array $emailAddresses): string
+    {
+        // try to get the one marked as primary, otherwise grab the first one
+        if (! empty($emailAddresses)) {
+            $primaryEmail = array_filter($emailAddresses, static fn($eMail) => $eMail->primary);
+            $userEmail    = ! empty($primaryEmail) ? array_shift($primaryEmail)->email : array_shift($emailAddresses)->email;
+        }
+        return $userEmail ?? '';
     }
 
     protected function setColumnsName(string $nameOfProcess, $userInfo): array
