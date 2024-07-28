@@ -85,7 +85,7 @@ class OAuthController extends BaseController implements ControllersInterface
         if ($this->checkExistenceUser($find) === false) {
             // Check config setting first to see if it can register automatically or not
             if (config('ShieldOAuthConfig')->oauthConfigs[$oauthName]['allow_register'] === false) {
-                return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found'));
+                return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found', [$userInfo->email])));
             }
 
             helper('text');
