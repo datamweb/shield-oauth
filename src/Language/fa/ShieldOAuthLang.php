@@ -20,7 +20,6 @@ return [
         'anti_forgery'        => 'متاسفانه، تلاش شما ، یک درخواست جعلی تشخیص داده شد.',
         'account_not_found'   => 'هیچ حسابی با ایمیل "{0}" ثبت نشده است.',
         'access_denied'       => '(To be translated) Authentication cancelled.',
-
     ],
 
     // ShieldOAuthButton in views
