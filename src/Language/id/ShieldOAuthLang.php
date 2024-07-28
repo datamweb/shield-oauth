@@ -18,7 +18,7 @@ return [
     'Callback' => [
         'oauth_class_not_set' => 'Terjadi kesalahan, sepertinya class OAuth tidak terpasang.',
         'anti_forgery'        => 'Maaf, permintaan Anda terdeteksi tidak valid!',
-        'account_not_found'   => 'Akun tidak ditemukan, silakan mendaftar terlebih dahulu!',
+        'account_not_found'   => 'Tidak ada akun yang terdaftar dengan email "{0}".',
     ],
 
     // ShieldOAuthButton in views
