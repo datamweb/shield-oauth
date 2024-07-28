@@ -21,6 +21,8 @@ use Datamweb\ShieldOAuth\Libraries\Basic\ControllersInterface;
 
 class OAuthController extends BaseController implements ControllersInterface
 {
+    private const ACCESS_DENIED = 'access_denied';
+
     public function redirectOAuth(string $oauthName): RedirectResponse
     {
         // if user login
@@ -54,6 +56,11 @@ class OAuthController extends BaseController implements ControllersInterface
             return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.oauth_class_not_set'));
         }
         $allGet = $this->request->getGet();
+
+        // if permission is denied or was cancelled by user.
+        if (isset($allGet['error']) && $allGet['error'] === self::ACCESS_DENIED) {
+            return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.access_denied'));
+        }
 
         // if api have error
         if (isset($allGet['error'])) {
