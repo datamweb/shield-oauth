@@ -52,16 +52,14 @@ class OAuthController extends BaseController implements ControllersInterface
     public function callBack(): RedirectResponse
     {
         // if user after callback request url
-        if (! session('oauth_name')) {
+        if (! $oauth_name = session('oauth_name')) {
             return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.oauth_class_not_set'));
         }
         $allGet = $this->request->getGet();
 
         // if permission is denied or was cancelled by user.
         if (isset($allGet['error']) && $allGet['error'] === self::ACCESS_DENIED) {
-            $oauth_name = session('oauth_name');
-            $OAuth      = ucfirst($oauth_name);
-
+            $OAuth     = ucfirst($oauth_name);
             $oauthName = lang("ShieldOAuthLang.{$OAuth}.{$oauth_name}");
 
             return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.access_denied', [$oauthName]));
