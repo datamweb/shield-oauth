@@ -19,7 +19,7 @@ return [
         'oauth_class_not_set' => 'خطای رخ داد، به نظر میرسد کلاس OAuth مورد نظر به درستی تنظیم نشده است.',
         'anti_forgery'        => 'متاسفانه، تلاش شما ، یک درخواست جعلی تشخیص داده شد.',
         'account_not_found'   => 'هیچ حسابی با ایمیل "{0}" ثبت نشده است.',
-        'access_denied'       => '(To be translated) Authentication cancelled! You declined {0} permissions.',
+        'access_denied'       => 'تأیید اعتبار لغو شد! شما دسترسی‌های {0} را رد کردید.',
     ],
 
     // ShieldOAuthButton in views
