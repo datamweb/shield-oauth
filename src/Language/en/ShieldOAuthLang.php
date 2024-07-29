@@ -19,7 +19,7 @@ return [
         'oauth_class_not_set' => 'An error occurred, it seems that the OAuth Class is not set.',
         'anti_forgery'        => 'Your request has been detected as fake. we are sorry!',
         'account_not_found'   => 'There is no account registered with the email "{0}".',
-        'access_denied'       => 'Authentication cancelled.',
+        'access_denied'       => 'Authentication cancelled! You declined {0} permissions.',
     ],
 
     // ShieldOAuthButton in views

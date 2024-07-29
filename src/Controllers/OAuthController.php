@@ -59,7 +59,9 @@ class OAuthController extends BaseController implements ControllersInterface
 
         // if permission is denied or was cancelled by user.
         if (isset($allGet['error']) && $allGet['error'] === self::ACCESS_DENIED) {
-            return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.access_denied'));
+            $oauthName = ucwords(session('oauth_name'));
+
+            return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.access_denied', [$oauthName]));
         }
 
         // if api have error

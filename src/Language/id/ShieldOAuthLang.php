@@ -19,7 +19,7 @@ return [
         'oauth_class_not_set' => 'Terjadi kesalahan, sepertinya class OAuth tidak terpasang.',
         'anti_forgery'        => 'Maaf, permintaan Anda terdeteksi tidak valid!',
         'account_not_found'   => 'Tidak ada akun yang terdaftar dengan email "{0}".',
-        'access_denied'       => 'Autentikasi dibatalkan.',
+        'access_denied'       => 'Autentikasi dibatalkan! Anda menolak izin {0}.',
     ],
 
     // ShieldOAuthButton in views
