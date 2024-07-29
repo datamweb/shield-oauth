@@ -60,7 +60,7 @@ class OAuthController extends BaseController implements ControllersInterface
         // if permission is denied or was cancelled by user.
         if (isset($allGet['error']) && $allGet['error'] === self::ACCESS_DENIED) {
             $oauth_name = session('oauth_name');
-            $OAuth      = ucwords($oauth_name);
+            $OAuth      = ucfirst($oauth_name);
 
             $oauthName = lang("ShieldOAuthLang.{$OAuth}.{$oauth_name}");
 
