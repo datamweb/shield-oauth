@@ -74,4 +74,4 @@ jobs:
         branch: $BRANCH_NAME
         title: "docs: update copyright year to ${current_year}"
         body: "This pull request updates the copyright year to ${current_year}."
-        labels: ["automation", "copyright", "documentation"]
+        labels: "automation,copyright,documentation"
