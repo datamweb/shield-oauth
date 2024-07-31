@@ -1,0 +1,77 @@
+name: Automate Update Copyright Year
+
+on:
+  schedule:
+    - cron: '0 0 1 1 *'  # Run the action annually on January 1st
+  workflow_dispatch:  # Allows for manual trigger
+
+jobs:
+  update-copyright-year:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Update Copyright Year
+      run: |
+        import datetime
+        import re
+
+        # Get the current year
+        current_year = datetime.datetime.now().year
+
+        # Files to update
+        files = ["LICENSE", "mkdocs.yml"]
+
+        # Function to update the copyright year
+        def update_copyright(content):
+            def replace_years(match):
+                # Do not update if the text contains "Lonnie Ezell"
+                if "Lonnie Ezell" in match.group(0):
+                    return match.group(0)
+                # Otherwise, update the end year to the current year
+                return f"{match.group(1)}-{current_year}"
+
+            # Replace the last year with the current year
+            return re.sub(r'(\d{4})-(\d{4})', replace_years, content)
+
+        # Process each file
+        for file in files:
+            with open(file, 'r') as f:
+                content = f.read()
+
+            # Update the file content
+            updated_content = update_copyright(content)
+
+            with open(file, 'w') as f:
+                f.write(updated_content)
+
+    - name: Create new branch and commit changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        # Configure Git for the action
+        git config --local user.email "pooya_parsa_dadashi@yahoo.com"
+        git config --local user.name "datamweb"
+        
+        # Create a new branch for the changes
+        BRANCH_NAME="update-copyright-${{ github.run_id }}"
+        
+        git switch -c $BRANCH_NAME
+        git add .
+        git commit -m "docs: update copyright year to ${current_year}"
+        git push origin $BRANCH_NAME
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: $BRANCH_NAME
+        title: "docs: update copyright year to ${current_year}"
+        body: "This pull request updates the copyright year to ${current_year}."
+        labels: ["automation", "copyright", "documentation"]
