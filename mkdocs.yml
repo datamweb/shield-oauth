@@ -24,10 +24,10 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/datamweb/shield-oauth
       name: GitHub
-  copyright: Copyright &copy; 2023 Pooya Parsa Dadashi
 
 repo_url: https://github.com/datamweb/shield-oauth
 edit_uri: edit/develop/docs/
+copyright: Copyright &copy; 2022-2023 Pooya Parsa Dadashi.
 
 plugins:
   - search
