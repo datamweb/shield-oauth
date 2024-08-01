@@ -41,7 +41,7 @@ jobs:
         BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}"
         echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
         
-        git switch -c $BRANCH_NAME
+        git switch -c $BRANCH_NAME develop
         git add .
         git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
         git push -f origin $BRANCH_NAME
