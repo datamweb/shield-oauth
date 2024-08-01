@@ -51,6 +51,7 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ env.BRANCH_NAME }}
+        base: develop
         title: "docs: update copyright year to ${{ env.CURRENT_YEAR }}."
         body: "This pull request updates the copyright year to ${{ env.CURRENT_YEAR }}."
         labels: "automation,copyright,documentation"
