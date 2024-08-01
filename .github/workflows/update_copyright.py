@@ -21,11 +21,18 @@ def update_copyright(content):
 
 # Process each file
 for file in files:
-    with open(file, 'r') as f:
-        content = f.read()
-
-    # Update the file content
-    updated_content = update_copyright(content)
-
-    with open(file, 'w') as f:
-        f.write(updated_content)
+    try:
+        with open(file, 'r') as f:
+            content = f.read()
+        
+        # Update the file content
+        updated_content = update_copyright(content)
+        
+        with open(file, 'w') as f:
+            f.write(updated_content)
+        
+        print(f"Updated {file} with copyright year {current_year}")
+    except FileNotFoundError:
+        print(f"File {file} not found. Skipping...")
+    except Exception as e:
+        print(f"An error occurred while processing {file}: {e}")
