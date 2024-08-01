@@ -3,6 +3,7 @@ import re
 
 # Get the current year
 current_year = datetime.datetime.now().year
+print(current_year)
 
 # Files to update
 files = ["LICENSE", "mkdocs.yml"]
@@ -36,3 +37,4 @@ for file in files:
         print(f"File {file} not found. Skipping...")
     except Exception as e:
         print(f"An error occurred while processing {file}: {e}")
+
