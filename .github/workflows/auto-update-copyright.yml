@@ -17,14 +17,6 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Get current year
-      id: get_year
-      run: |
-        # Run the Python script to get the current year
-        current_year=$(python .github/workflows/update_copyright.py)
-        # Save the current year to an environment variable
-        echo "CURRENT_YEAR=${current_year}" >> $GITHUB_ENV
-
     - name: Run copyright update script
       run: |
         python .github/workflows/update_copyright.py  # Run the Python script
@@ -32,18 +24,17 @@ jobs:
     - name: Create new branch and commit changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
       run: |
         # Configure Git for the action
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
         # Create a new branch for the changes
-        BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}"
+        BRANCH_NAME="update-copyright-${{ github.run_id }}"
         
         git switch -c $BRANCH_NAME
         git add .
-        git commit -m "docs: update copyright year to ${CURRENT_YEAR}"
+        git commit -m "Update copyright year to ${current_year}"
         git push origin $BRANCH_NAME
 
     - name: Create Pull Request
@@ -54,3 +45,21 @@ jobs:
         title: "docs: update copyright year to ${CURRENT_YEAR}."
         body: "This pull request updates the copyright year to ${CURRENT_YEAR}."
         labels: "automation,copyright,documentation"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
