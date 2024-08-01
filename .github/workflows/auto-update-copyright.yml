@@ -6,6 +6,9 @@ on:
 
 jobs:
   update-copyright-year:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -37,7 +40,7 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # Create a new branch for the changes
-        BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}"
+        BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}-${{ github.run_id }}"
         echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
         
         git switch -c $BRANCH_NAME develop
@@ -50,7 +53,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ env.BRANCH_NAME }}
-        branch-suffix: short-commit-hash
         base: develop
         title: "docs: update copyright year to ${{ env.CURRENT_YEAR }}."
         body: "This pull request updates the copyright year to ${{ env.CURRENT_YEAR }}."
