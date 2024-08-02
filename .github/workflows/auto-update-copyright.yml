@@ -32,7 +32,7 @@ jobs:
         # Configure Git for the action
         git config --local user.email "Pooya_parsa_dadashi@yahoo.com"
         git config --local user.name "Pooya Parsa Dadashi"
-        git config --local user.signingkey "20DDF17D5B973AF5"
+        git config --local user.signingkey 20DDF17D5B973AF5
         git config --local commit.gpgsign true
 
         
