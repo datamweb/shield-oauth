@@ -24,22 +24,30 @@ jobs:
         current_year=$(date +%Y)
         echo "CURRENT_YEAR=${current_year}" >> $GITHUB_ENV
         
-    - name: Setup GPG
+    - name: Import GPG key
+      run: echo $GPG_KEY | base64 --decode | gpg --batch --import
+      env:
+        GPG_KEY: ${{ secrets.GPG_KEY }}
+
+    - name: Add the custom gpg siging program that passes the passphrase to the gpg CLI
       run: |
-        echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
-        echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
-        gpg --batch --passphrase "${{ secrets.GPG_PASSPHRASE }}" --list-keys
+        rm -rf /tmp/gpg.sh
+        echo '#!/bin/bash' >> /tmp/gpg.sh
+        echo 'gpg --batch --pinentry-mode=loopback --passphrase $GPG_KEY_PASSPHRASE $@' >> /tmp/gpg.sh
+        chmod +x /tmp/gpg.sh
 
     - name: Create new branch and commit changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
+        GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
       run: |
         # Configure Git for the action
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "pooya_parsa_dadashi@yahoo.com"
+        git config --local user.name "Pooya Parsa Dadashi"
         git config --local commit.gpgsign true
-        git config --local user.signingkey ${{ secrets.GPG_KEY_ID }}
+        git config --local user.signingkey $GPG_KEY_ID
+        git config --local gpg.program /tmp/gpg.sh
 
         
         # Create a new branch for the changes
@@ -51,6 +59,7 @@ jobs:
         git add .  # Ensure all changes are added
         git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
         git push -f origin $BRANCH_NAME
+          
     
     - name: Create Pull Request Github CLI
       env:
