@@ -28,6 +28,14 @@ jobs:
       run: echo $GPG_KEY | base64 --decode | gpg --batch --import
       env:
         GPG_KEY: ${{ secrets.GPG_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
+        GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
+        GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+        GIT_AUTHOR_NAME: Pooya Parsa Dadashi
+        GIT_AUTHOR_EMAIL: pooya_parsa_dadashi@yahoo.com
 
     - name: Add the custom gpg siging program that passes the passphrase to the gpg CLI
       run: |
@@ -35,6 +43,15 @@ jobs:
         echo '#!/bin/bash' >> /tmp/gpg.sh
         echo 'gpg --batch --pinentry-mode=loopback --passphrase $GPG_KEY_PASSPHRASE $@' >> /tmp/gpg.sh
         chmod +x /tmp/gpg.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
+        GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
+        GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+        GIT_AUTHOR_NAME: Pooya Parsa Dadashi
+        GIT_AUTHOR_EMAIL: pooya_parsa_dadashi@yahoo.com
 
     - name: Create new branch and commit changes
       env:
@@ -62,7 +79,7 @@ jobs:
         git switch -c $BRANCH_NAME develop
         python .github/workflows/update_copyright.py  # Run the Python script
         git add .  # Ensure all changes are added
-        git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
+        git commit -S -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
         git push -f origin $BRANCH_NAME
           
     
