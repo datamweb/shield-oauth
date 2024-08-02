@@ -41,6 +41,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
         GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+        GPG_KEY_PASSPHRASE: ${{ secrets.GPG_KEY_PASSPHRASE }}
+        GIT_COMMITTER_NAME: ${{ secrets.GIT_COMMITTER_NAME }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.GIT_COMMITTER_EMAIL }}
+        GIT_AUTHOR_NAME: Pooya Parsa Dadashi
+        GIT_AUTHOR_EMAIL: pooya_parsa_dadashi@yahoo.com
       run: |
         # Configure Git for the action
         git config --local user.email "pooya_parsa_dadashi@yahoo.com"
