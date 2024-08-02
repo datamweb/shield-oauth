@@ -48,6 +48,7 @@ jobs:
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        base: develop
         branch: ${{ env.BRANCH_NAME }}
         title: "docs: update copyright year to ${{ env.CURRENT_YEAR }}."
         body: "This pull request updates the copyright year to ${{ env.CURRENT_YEAR }}."
