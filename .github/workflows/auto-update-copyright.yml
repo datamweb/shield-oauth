@@ -41,18 +41,17 @@ jobs:
         python .github/workflows/update_copyright.py  # Run the Python script
         git add .  # Ensure all changes are added
         git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
-        git diff
-        git push origin $BRANCH_NAME
+        git push -f origin $BRANCH_NAME
+    
+    - name: Create Pull Request Github CLI
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        CURRENT_YEAR: ${{ env.CURRENT_YEAR }}
+      run: |
+        gh pr create --base develop --head datamweb:$BRANCH_NAME --title "test" --body "Everything works again"
 
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v6
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        base: develop
-        branch: ${{ env.BRANCH_NAME }}
-        title: "docs: update copyright year to ${{ env.CURRENT_YEAR }}."
-        body: "This pull request updates the copyright year to ${{ env.CURRENT_YEAR }}."
-        labels: "automation,copyright,documentation"
+      
+          
 
 
 
