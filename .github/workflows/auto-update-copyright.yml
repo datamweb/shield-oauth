@@ -7,8 +7,8 @@ on:
 jobs:
   update-copyright-year:
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write-all
+      pull-requests: write-all
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -36,13 +36,14 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # Create a new branch for the changes
-        BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}-${{ github.run_id }}"
+        BRANCH_NAME="update_copyright_${{ env.CURRENT_YEAR }}"
         echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
         
         git switch -c $BRANCH_NAME develop
         python .github/workflows/update_copyright.py  # Run the Python script
-        git add -A  # Ensure all changes are added
+        git add .  # Ensure all changes are added
         git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
+        git diff
         git push origin $BRANCH_NAME
 
     - name: Create Pull Request
@@ -50,7 +51,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ env.BRANCH_NAME }}
-        base: develop
         title: "docs: update copyright year to ${{ env.CURRENT_YEAR }}."
         body: "This pull request updates the copyright year to ${{ env.CURRENT_YEAR }}."
         labels: "automation,copyright,documentation"
