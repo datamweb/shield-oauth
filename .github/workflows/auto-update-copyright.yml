@@ -19,17 +19,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Run copyright update script
-      run: |
-        python .github/workflows/update_copyright.py  # Run the Python script
-
     - name: Get Current Year
       id: get_year
       run: |
         # Get the current year using shell commands
         current_year=$(date +%Y)
         echo "CURRENT_YEAR=${current_year}" >> $GITHUB_ENV
-
+        
+    - name: Run copyright update script
+      run: |
+        python .github/workflows/update_copyright.py  # Run the Python script
+        
     - name: Create new branch and commit changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,10 +43,11 @@ jobs:
         BRANCH_NAME="update-copyright-${{ env.CURRENT_YEAR }}-${{ github.run_id }}"
         echo "BRANCH_NAME=${BRANCH_NAME}" >> $GITHUB_ENV
         
-        git switch -c $BRANCH_NAME develop
-        git add .
+        git switch -c $BRANCH_NAME
+        git add -A  # Ensure all changes are added
+        git status  # Check the status to confirm changes
         git commit -m "docs: update copyright year to ${{ env.CURRENT_YEAR }}"
-        git push -f origin $BRANCH_NAME
+        git push origin $BRANCH_NAME
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v6
