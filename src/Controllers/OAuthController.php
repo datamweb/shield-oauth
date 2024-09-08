@@ -22,7 +22,8 @@ use Datamweb\ShieldOAuth\Libraries\Basic\ControllersInterface;
 class OAuthController extends BaseController implements ControllersInterface
 {
     private const ACCESS_DENIED = 'access_denied';
-    private ?User $userExist;
+
+    private ?User $userExist = null;
 
     public function redirectOAuth(string $oauthName): RedirectResponse
     {
