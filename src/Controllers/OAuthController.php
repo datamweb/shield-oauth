@@ -111,7 +111,7 @@ class OAuthController extends BaseController implements ControllersInterface
             $users->addToDefaultGroup($user);
         }
 
-        if ($this->userExist->isBanned()) {
+        if ($this->userExist && $this->userExist->isBanned()) {
             return redirect()->to(config('Auth')->logoutRedirect())->with('error', $this->userExist->getBanMessage() ?? lang('Auth.bannedUser'));
         }
 
