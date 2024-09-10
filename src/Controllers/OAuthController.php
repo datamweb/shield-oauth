@@ -143,7 +143,7 @@ class OAuthController extends BaseController implements ControllersInterface
     private function checkExistenceUser(array $find = []): bool
     {
         $users = model('ShieldOAuthModel');
-        // $find = ['email' => $this->userInfo()->email];
+
         $findUser = $users->findByCredentials($find);
 
         $this->userExist = $findUser;
