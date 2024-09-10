@@ -32,7 +32,7 @@ class OAuthController extends BaseController implements ControllersInterface
             return redirect()->to(config('Auth')->loginRedirect());
         }
 
-        if (config('ShieldOAuthConfig')->oauthConfigs[$oauthName]['allow_login'] === false) {
+        if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_login'] === false) {
             $errorText = 'ShieldOAuthLang.' . ucfirst($oauthName) . '.not_allow';
 
             return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang($errorText));
@@ -93,7 +93,7 @@ class OAuthController extends BaseController implements ControllersInterface
             $userid = $this->syncingUserInfo($find, $updateFields);
         } else {
             // Check config setting first to see if it can register automatically or not
-            if (config('ShieldOAuthConfig')->oauthConfigs[$oauthName]['allow_register'] === false) {
+            if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_register'] === false) {
                 return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found', [$userInfo->email]));
             }
 
@@ -164,10 +164,10 @@ class OAuthController extends BaseController implements ControllersInterface
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
 
-        $syncingUserInfo = config('ShieldOAuthConfig')->syncingUserInfo;
-        if ($syncingUserInfo === true) {
+        if (setting('ShieldOAuthConfig.syncingUserInfo') === true) {
             $user->fill($updateFields);
         }
+
         $users->save($user);
 
         return $user->id;
