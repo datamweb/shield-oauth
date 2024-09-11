@@ -1,74 +1,73 @@
 {
-    "name": "datamweb/shield-oauth",
-    "description": "OAuth for CodeIgniter Shield",
-    "license": "MIT",
-    "type": "library",
-    "keywords": [
-        "codeigniter4",
-        "shield",
-        "oauth",
-        "googleOauth",
-        "githubOauth",
-        "authentication",
-        "authorization"
-    ],
-    "authors": [
-        {
-            "name": "Pooya Parsa Dadashi",
-            "email": "pooya_parsa_dadashi@yahoo.com",
-            "role": "Developer"
-        }
-    ],
-    "homepage": "https://github.com/datamweb/shield-oauth",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "php": "^7.4.3 || ^8.0 || ^8.1 || ^8.2",
-        "ext-curl": "*",
-        "codeigniter4/shield": "^1.0",
-        "codeigniter4/settings": "^2.2"
-    },
-    "require-dev": {
-        "codeigniter4/devkit": "^1.0",
-        "codeigniter4/framework": "^4.3.5",
-        "codeigniter4/shield": "^1.0",
-        "rector/rector": "1.2.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "Datamweb\\ShieldOAuth\\": "src"
-        },
-        "exclude-from-classmap": [
-            "**/Database/Migrations/**"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests",
-            "Tests\\Support\\": "tests/_support"
-        }
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "bash admin/setup.sh"
-        ],
-        "ci": [
-            "Composer\\Config::disableProcessTimeout",
-            "@cs"
-        ],
-        "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
-        "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
-        "style": "@cs-fix"
-    },
-    "config": {
-        "allow-plugins": {
-            "phpstan/extension-installer": true
-        }
-    },
-    "support": {
-        "forum": "https://github.com/datamweb/shield-oauth/discussions",
-        "source": "https://github.com/datamweb/shield-oauth",
-        "issues": "https://github.com/datamweb/shield-oauth/issues",
-        "docs": "https://www.shield-oauth.codeigniter4.ir"
+  "name": "datamweb/shield-oauth",
+  "description": "OAuth for CodeIgniter Shield",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "codeigniter4",
+    "shield",
+    "oauth",
+    "googleOauth",
+    "githubOauth",
+    "authentication",
+    "authorization"
+  ],
+  "authors": [
+    {
+      "name": "Pooya Parsa Dadashi",
+      "email": "pooya_parsa_dadashi@yahoo.com",
+      "role": "Developer"
     }
+  ],
+  "homepage": "https://github.com/datamweb/shield-oauth",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.4.3 || ^8.0 || ^8.1 || ^8.2",
+    "ext-curl": "*",
+    "codeigniter4/shield": "^1.0"
+  },
+  "require-dev": {
+    "codeigniter4/devkit": "^1.0",
+    "codeigniter4/framework": "^4.3.5",
+    "codeigniter4/shield": "^1.0",
+    "rector/rector": "1.2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Datamweb\\ShieldOAuth\\": "src"
+    },
+    "exclude-from-classmap": [
+      "**/Database/Migrations/**"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests",
+      "Tests\\Support\\": "tests/_support"
+    }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "bash admin/setup.sh"
+    ],
+    "ci": [
+      "Composer\\Config::disableProcessTimeout",
+      "@cs"
+    ],
+    "cs": "php-cs-fixer fix --ansi --verbose --dry-run --diff",
+    "cs-fix": "php-cs-fixer fix --ansi --verbose --diff",
+    "style": "@cs-fix"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
+  },
+  "support": {
+    "forum": "https://github.com/datamweb/shield-oauth/discussions",
+    "source": "https://github.com/datamweb/shield-oauth",
+    "issues": "https://github.com/datamweb/shield-oauth/issues",
+    "docs": "https://www.shield-oauth.codeigniter4.ir"
+  }
 }

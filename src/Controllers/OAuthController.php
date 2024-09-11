@@ -32,7 +32,6 @@ class OAuthController extends BaseController implements ControllersInterface
             return redirect()->to(config('Auth')->loginRedirect());
         }
 
-        /** @phpstan-ignore-next-line */
         if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_login'] === false) {
             $errorText = 'ShieldOAuthLang.' . ucfirst($oauthName) . '.not_allow';
 
@@ -94,7 +93,6 @@ class OAuthController extends BaseController implements ControllersInterface
             $userid = $this->syncingUserInfo($find, $updateFields);
         } else {
             // Check config setting first to see if it can register automatically or not
-            /** @phpstan-ignore-next-line */
             if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_register'] === false) {
                 return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found', [$userInfo->email]));
             }
@@ -166,7 +164,6 @@ class OAuthController extends BaseController implements ControllersInterface
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
 
-        /** @phpstan-ignore-next-line */
         if (setting('ShieldOAuthConfig.syncingUserInfo') === true) {
             $user->fill($updateFields);
         }
