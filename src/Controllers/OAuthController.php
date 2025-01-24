@@ -164,7 +164,7 @@ class OAuthController extends BaseController implements ControllersInterface
         $users = model('ShieldOAuthModel');
         $user  = $users->findByCredentials($find);
 
-        if (setting('ShieldOAuthConfig.syncingUserInfo') === true) {
+        if (setting('ShieldOAuthConfig.oauthConfigs')['syncingUserInfo'] === true) {
             $user->fill($updateFields);
         }
 
