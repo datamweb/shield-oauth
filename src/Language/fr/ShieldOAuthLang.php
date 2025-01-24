@@ -36,6 +36,10 @@ return [
         'google'    => 'Google',
         'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec Google maintenant!',
     ],
+    'Microsoft' => [
+        'microsoft' => 'Microsoft',
+        'not_allow' => 'Vous ne pouvez pas vous connecter ou vous inscrire avec Microsoft maintenant!',
+    ],
     // 'Yahoo' => [
     //     'yahoo'     => 'Yahoo',
     //     'not_allow' => "Vous ne pouvez pas vous connecter ou vous inscrire avec Yahoo maintenant!",

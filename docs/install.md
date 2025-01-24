@@ -25,15 +25,17 @@ If you have it installed as a phar, or otherwise you will need to adjust the way
 ```console
 composer require datamweb/shield-oauth:dev-develop
 ```
+
 > **Note**
-> You can manually install `Shield OAuth` by extracting the project file to path `app\ThirdParty\shield-oauth` and then adding 
-> 
->```php     
+> You can manually install `Shield OAuth` by extracting the project file to path `app\ThirdParty\shield-oauth` and then adding
+>
+> ```php
 > public $psr4 = [
 >     // add this line
 >     'Datamweb\ShieldOAuth' => APPPATH . 'ThirdParty/shield-oauth/src',
 > ];
-> ``` 
+> ```
+>
 > to the `app/Config/Autoload.php` file, however we do not recommend this. Please use the Composer.
 
 ## Add Required Columns
@@ -47,6 +49,7 @@ Data of Table "users":
 | id | username | status | ... | first_name | last_name | avatar |
 +----+----------+--------+-...-+------------+-----------+--------+
 ```
+
 Therefore, you can add `first_name`, `last_name`, and `avatar` columns to table `users` by any method you want or run the migrations:
 
 ```console
@@ -57,7 +60,7 @@ php spark migrate -n Datamweb\ShieldOAuth
 > By default, `Shield OAuth` uses columns named `first_name`, `last_name`, and `avatar`.
 > For any reason, if you want to consider another name for them columns, you can do it through the config file(`config/ShieldOAuthConfig.php`) and set the desired values in:
 
-```php 
+```php
 public array $usersColumnsName = [
     'first_name' => 'first_name',
     'last_name'  => 'last_name',
@@ -79,7 +82,7 @@ public $globals = [
 ];
 ```
 
-## Set keys 
+## Set keys
 
 Receive keys `client_id` and `client_secret` from each OAuth server.
 To connect to any of the servers, you need to receive`client_id` and `client_secret` from them and then set them in file **.env** Or `app/Config/ShieldOAuthConfig`.
@@ -112,17 +115,26 @@ public array $oauthConfigs = [
             'client_secret' => 'fsdfsdfsgdgrdg',
         // ...
     ],
+    'microsoft' => [
+            'client_id'     => 'example-098a-43sd-9813-9747f3gg6f6h',
+            'client_secret' => 'example-qw53-446r-tyy1-856ff9ue8fdf',
+        // ...
+    ],
     // and other services...
 ```
 
 ## Adding all login button with OAuth in View
+
 The last step is to, You can create your own buttons in views, what is important is that the addresses should be as follows:
+
 ```html
 http://localhost:8080/oauth/google
 http://localhost:8080/oauth/github
 http://localhost:8080/oauth/yahoo
+http://localhost:8080/oauth/microsoft
 <!-- and other OAuth !>
 ```
+
 However, `Shield OAuth` suggests the following for ease of use. By adding the following commands to the `vendor/codeigniter4/shield/src/Views/login.php` and `vendor/codeigniter4/shield/src/Views/register.php` file, `Shield OAuth` will automatically display all the OAuth you provide as buttons in login/register views.
 
 ```html
@@ -132,6 +144,7 @@ However, `Shield OAuth` suggests the following for ease of use. By adding the fo
 ```html
 {{ShieldOAuthButtonForRegisterPage}}
 ```
+
 Because we have used Bootstrap to make the dropdown button, you need to add the following items at the end of the views file.
 
 ```php

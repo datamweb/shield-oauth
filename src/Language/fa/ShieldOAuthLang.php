@@ -36,6 +36,10 @@ return [
         'google'    => 'گوگل',
         'not_allow' => 'اکنون امکان ورود و یا ثبت نام با گوگل وجود ندارد.',
     ],
+    'Microsoft' => [
+        'microsoft' => 'Microsoft',
+        'not_allow' => "(To be translated) Now you can't login or register with Microsoft!",
+    ],
     // 'Yahoo' => [
     //     'yahoo'     => 'یاهو',
     //     'not_allow' => "اکنون امکان ورود و یا ثبت نام با یاهو وجود ندارد!",

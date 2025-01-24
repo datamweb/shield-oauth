@@ -99,7 +99,7 @@ class ShieldOAuth
     {
         $pieces = explode('|', $this->allOAuth());
 
-        return array_diff($pieces, ['github', 'google']);
+        return array_diff($pieces, ['github', 'google', 'microsoft']);
     }
 
     /**
@@ -127,10 +127,11 @@ class ShieldOAuth
 
         $Button .= '<a href=' . base_url('oauth/google') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Google.google') . '</a>';
         $Button .= '<a href=' . base_url('oauth/github') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Github.github') . '</a>';
+        $Button .= '<a href=' . base_url('oauth/microsoft') . " class='btn btn-outline-secondary' aria-current='page'>" . lang('ShieldOAuthLang.Microsoft.microsoft') . '</a>';
         if ($this->otherOAuth() !== []) {
             $Button .= "<div class='btn-group' role='group'>
                             <button type='button' class='btn btn-outline-secondary dropdown-toggle' data-bs-toggle='dropdown' aria-expanded='false'>"
-                            . lang('ShieldOAuthLang.other') . "
+                . lang('ShieldOAuthLang.other') . "
                             </button>
                             <ul class='dropdown-menu'>";
 

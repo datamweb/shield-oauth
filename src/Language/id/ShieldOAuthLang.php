@@ -36,6 +36,10 @@ return [
         'google'    => 'Google',
         'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan Google!',
     ],
+    'Microsoft' => [
+        'microsoft' => 'Microsoft',
+        'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan Microsoft!',
+    ],
     // 'Yahoo' => [
     //     'yahoo'     => 'Yahoo',
     //     'not_allow' => 'Sekarang Anda tidak bisa masuk atau mendaftar dengan Yahoo!',
