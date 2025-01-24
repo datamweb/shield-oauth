@@ -20,6 +20,7 @@ return [
         'anti_forgery'        => 'Votre demande a été détectée comme erronée. Nous sommes désolés!',
         'account_not_found'   => 'Il n\'y a pas de compte enregistré avec l\'email "{0}".',
         'access_denied'       => 'Authentification annulée ! Vous avez refusé les autorisations {0}.',
+        'account_disabled'    => '(To be translated) This account is no longer active. Please contact administrator for assistance.',
     ],
 
     // ShieldOAuthButton in views

@@ -20,6 +20,7 @@ return [
         'anti_forgery'        => 'Your request has been detected as fake. we are sorry!',
         'account_not_found'   => 'There is no account registered with the email "{0}".',
         'access_denied'       => 'Authentication cancelled! You declined {0} permissions.',
+        'account_disabled'    => 'This account is no longer active. Please contact administrator for assistance.',
     ],
 
     // ShieldOAuthButton in views

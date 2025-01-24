@@ -18,6 +18,7 @@ use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Models\LoginModel;
 use Datamweb\ShieldOAuth\Libraries\Basic\ControllersInterface;
+use Throwable;
 
 class OAuthController extends BaseController implements ControllersInterface
 {
@@ -91,6 +92,10 @@ class OAuthController extends BaseController implements ControllersInterface
             $updateFields = $oauthClass->getColumnsName('syncingUserInfo', $userInfo);
 
             $userid = $this->syncingUserInfo($find, $updateFields);
+
+            if ($this->userExist->isBanned()) {
+                return redirect()->to(config('Auth')->logoutRedirect())->with('error', $this->userExist->getBanMessage() ?? lang('Auth.bannedUser'));
+            }
         } else {
             // Check config setting first to see if it can register automatically or not
             if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_register'] === false) {
@@ -102,17 +107,17 @@ class OAuthController extends BaseController implements ControllersInterface
             // new user
             $entitiesUser = new User($oauthClass->getColumnsName('newUser', $userInfo));
 
-            $users->save($entitiesUser);
-            $userid = $users->getInsertID();
+            try {
+                $userid = $users->insert($entitiesUser);
+            } catch (Throwable $th) {
+                // If the insert fails due to a duplicate key entry, see the log message for audit.
+                return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_disabled'));
+            }
+
             // To get the complete user object with ID, we need to get from the database
-            $user = $users->findById($userid);
-            $users->save($user);
+            $user = $users->find($userid);
             // Add to default group
             $users->addToDefaultGroup($user);
-        }
-
-        if ($this->userExist && $this->userExist->isBanned()) {
-            return redirect()->to(config('Auth')->logoutRedirect())->with('error', $this->userExist->getBanMessage() ?? lang('Auth.bannedUser'));
         }
 
         auth()->loginById($userid);
