@@ -50,7 +50,7 @@ class ShieldOAuth extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '1000',
                 'null'       => true,
-            ],
+            ]
         ];
 
         $this->forge->addColumn('users', $fields);
