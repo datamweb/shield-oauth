@@ -96,7 +96,7 @@ class GoogleOAuth extends AbstractOAuth
     {
         if ($nameOfProcess === 'syncingUserInfo') {
             return [
-                $this->config->usersColumnsName['first_name'] => $userInfo->name,
+                $this->config->usersColumnsName['first_name'] => $userInfo->given_name,
                 $this->config->usersColumnsName['last_name']  => $userInfo->family_name ?? null,
                 $this->config->usersColumnsName['avatar']     => $userInfo->picture,
             ];
