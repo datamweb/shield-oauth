@@ -21,7 +21,6 @@ class ShieldOAuth extends Migration
     private string $first_name;
     private string $last_name;
     private string $avatar;
-    private string $username;
 
     public function __construct()
     {
@@ -55,15 +54,6 @@ class ShieldOAuth extends Migration
         ];
 
         $this->forge->addColumn('users', $fields);
-
-        $fields2 = [
-            'username'     => [
-                'type'     => 'VARCHAR(100)',
-                'null'     => true
-            ]
-        ];
-
-        $this->forge->modifyColumn('users', $fields2);
     }
 
     public function down(): void
