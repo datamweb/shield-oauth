@@ -28,6 +28,9 @@ abstract class AbstractOAuth
     protected function setToken(string $token): void
     {
         $this->token = $token;
+
+        $session = session(); // session helper is required already by CI Shield, but might not be initialized yet
+        $session->set('oauth_token', $token);
     }
 
     protected function getToken(): string
