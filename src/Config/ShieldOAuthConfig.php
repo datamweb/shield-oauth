@@ -53,6 +53,13 @@ class ShieldOAuthConfig extends BaseConfig
         //     'allow_login'    => true,
         //     'allow_register' => true,
         // ],
+        // 'facebook' => [
+        //     'client_id'     => 'Get it from Facebook',
+        //     'client_secret' => 'Get it from Facebook',
+
+        //     'allow_login'    => true,
+        //     'allow_register' => true,
+        // ],
     ];
 
     /**
