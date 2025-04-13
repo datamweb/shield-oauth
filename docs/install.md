@@ -120,6 +120,7 @@ The last step is to, You can create your own buttons in views, what is important
 ```html
 http://localhost:8080/oauth/google
 http://localhost:8080/oauth/github
+http://localhost:8080/oauth/facebook
 http://localhost:8080/oauth/yahoo
 <!-- and other OAuth !>
 ```

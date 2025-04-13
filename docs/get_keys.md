@@ -34,3 +34,6 @@ The guide to get the `client_id` & `client_secret` keys on Google is [here](http
 
 # Get Yahoo Keys
 The guide to get the `client_id` & `client_secret` keys on Yahoo is [here](https://developer.yahoo.com/apps/create/).
+
+# Get Facebook Keys
+The guide to get the `client_id` & `client_secret` keys on Facebook is [here](https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow#login).
