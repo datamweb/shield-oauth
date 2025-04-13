@@ -32,9 +32,7 @@ php spark migrate -n Datamweb\ShieldOAuth
  
 ### Step 4 : 
 
-Receive keys `client_id` and `client_secret` from each OAuth server. and setting them in file `app\Config\ShieldOAuthConfig.php`.
-
-callBack address is `https://yourBaseURL.com/oauth/call-back`.
+Receive keys `client_id` and `client_secret` from each OAuth provider and set them in file `app\Config\ShieldOAuthConfig.php` callBack address is `https://yourBaseURL.com/oauth/call-back`.
 ```php
 public array $oauthConfigs = [
     'github' => [
