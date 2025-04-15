@@ -54,6 +54,16 @@ class ShieldOAuth extends Migration
         ];
 
         $this->forge->addColumn('users', $fields);
+
+        $fields2 = [
+            'username'     => [
+                'type'     => 'VARCHAR(256)',
+                'null'     => true,
+            ]
+        ];
+
+        // use 'modify' since the prerequisite Shield plugin will certainly have created this column
+        $this->forge->modifyColumn('users', $fields2);
     }
 
     public function down(): void

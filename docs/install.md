@@ -53,6 +53,8 @@ Therefore, you can add `first_name`, `last_name`, and `avatar` columns to table 
 php spark migrate -n Datamweb\ShieldOAuth
 ```
 
+The default size of the `username` field created by Shield is **30** characters. Since Oauth uses the `username` field for the user's email address, this often is not large enough. Consider increasing the size of this field to `VARCHAR(256)`. _The migrations make this change for you_.
+
 > **Note**
 > By default, `Shield OAuth` uses columns named `first_name`, `last_name`, and `avatar`.
 > For any reason, if you want to consider another name for them columns, you can do it through the config file(`config/ShieldOAuthConfig.php`) and set the desired values in:
