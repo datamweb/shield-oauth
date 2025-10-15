@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Datamweb\ShieldOAuth\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Events\Events;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Models\LoginModel;
@@ -109,6 +110,9 @@ class OAuthController extends BaseController implements ControllersInterface
             $users->save($user);
             // Add to default group
             $users->addToDefaultGroup($user);
+
+            // Trigger the register event defined by Shield to integrate oauth registrations better
+            Events::trigger('register', $user);
         }
 
         if ($this->userExist && $this->userExist->isBanned()) {
