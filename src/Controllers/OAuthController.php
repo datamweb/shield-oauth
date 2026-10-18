@@ -92,8 +92,13 @@ class OAuthController extends BaseController implements ControllersInterface
 
             $userid = $this->syncingUserInfo($find, $updateFields);
         } else {
-            // Check config setting first to see if it can register automatically or not
-            if (setting('ShieldOAuthConfig.oauthConfigs')[$oauthName]['allow_register'] === false) {
+            // Respect Shield's global registration switch (Auth.allowRegistration, overridable in .env)
+            if (! $this->isShieldRegistrationAllowed()) {
+                return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('Auth.registerDisabled'));
+            }
+
+            // Check config setting to see if this OAuth service can register automatically or not
+            if (! $this->isOAuthRegistrationAllowed($oauthName)) {
                 return redirect()->to(config('Auth')->logoutRedirect())->with('error', lang('ShieldOAuthLang.Callback.account_not_found', [$userInfo->email]));
             }
 
@@ -138,6 +143,26 @@ class OAuthController extends BaseController implements ControllersInterface
     private function checkAntiForgery(string $state): bool
     {
         return $state === session()->get('state');
+    }
+
+    /**
+     * Whether Shield itself allows new user registrations.
+     * Fails closed: anything other than `true` denies registration.
+     */
+    private function isShieldRegistrationAllowed(): bool
+    {
+        return setting('Auth.allowRegistration') === true;
+    }
+
+    /**
+     * Whether the given OAuth service is allowed to register new users.
+     * Fails closed: a missing or non-true `allow_register` denies registration.
+     */
+    private function isOAuthRegistrationAllowed(string $oauthName): bool
+    {
+        $oauthConfigs = setting('ShieldOAuthConfig.oauthConfigs');
+
+        return ($oauthConfigs[$oauthName]['allow_register'] ?? false) === true;
     }
 
     private function checkExistenceUser(array $find = []): bool

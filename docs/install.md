@@ -115,6 +115,20 @@ public array $oauthConfigs = [
     // and other services...
 ```
 
+### Controlling Registration
+
+New accounts are created through OAuth only when **both** of the following are `true`:
+
+1. Shield's global `Auth.allowRegistration` setting (in `app/Config/Auth.php`, or overridden in `.env`):
+
+    ```console
+    auth.allowRegistration = false
+    ```
+
+2. The `allow_register` key of the OAuth service in `$oauthConfigs`. If this key is missing, registration through that service is denied.
+
+When registration is disabled, users who already have an account can still log in through OAuth (as long as `allow_login` is `true`), but no new accounts are created.
+
 ## Adding all login button with OAuth in View
 The last step is to, You can create your own buttons in views, what is important is that the addresses should be as follows:
 ```html
